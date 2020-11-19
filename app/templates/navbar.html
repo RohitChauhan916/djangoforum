@@ -1,0 +1,62 @@
+<div class="topbar stick">
+		<div class="logo">
+			<a title="" href="/"><img src="/static/images/logo2.png" alt=""></a>
+		</div>
+		
+		<div class="top-area">
+			
+			<ul class="setting-area">
+				<!--<li>
+					<a href="#" title="Home" data-ripple=""><i class="ti-search"></i></a>
+					<div class="searched">
+						<form method="post" class="form-search">
+							<input type="text" placeholder="Search Friend">
+							<button data-ripple><i class="ti-search"></i></button>
+						</form>
+					</div>
+				</li>-->
+				
+				<li>
+					<a href="#" title="Notification" data-ripple="">
+						<i class="ti-bell"></i><span>{{announced.count}}</span>
+					</a>
+					<div class="dropdowns">
+						<span>{{announced.count}} New Notifications</span>
+						<ul class="drops-menu">
+						{% for announce in announced%}
+							<li>
+								<a href="/announce" title="">
+									<img src="images/resources/thumb-1.jpg" alt="">
+									<div class="mesg-meta">
+										<span>{{announce.title}}</span>
+									</div>
+								</a>
+							</li>
+							{% endfor %}
+						</ul>
+						<a href="/announce" title="" class="more-mesg">view more</a>
+					</div>
+				</li>
+				
+			</ul>
+			<div class="user-img">
+			{% if profiles.profile_photo %} 
+				<img src="/static/images/{{profiles.profile_photo}}" alt="" width="50px" height="50px">
+				{% else %}
+				<img src="/static/images/Profile/blank_profile.png" alt="" width="50px" height="50px">
+				{% endif %}
+               		<span class="hidden-xs"> {{user.username}}</span>
+				<span class="status f-online"></span>
+				<div class="user-setting">
+					<a href="/timeline/{{user.id}}" title=""><i class="ti-user"></i> Timeline</a>
+					<a href="/profile/{{user.id}}" title=""><i class="ti-user"></i> view profile</a>
+					<a href="/edit_profile/{{user.id}}" title=""><i class="ti-pencil-alt"></i>edit profile</a>
+					<a href="/logout" title=""><i class="ti-power-off"></i>log out</a>
+				</div>
+			</div>
+
+			<div class="a">
+                <a href="/" title="Home" data-ripple=""><i class="ti-home"></i></a>
+			</div>
+		</div>
+	</div><!-- topbar -->

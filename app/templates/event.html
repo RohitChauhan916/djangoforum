@@ -1,0 +1,41 @@
+{% extends 'header.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+<img src="/static/images/event-banner.jpg">
+
+<section>
+    <div class="gap gray-bg">
+        <div class="container">
+            <div class="row" id="page-contents">
+                <div class=" col-lg-9">
+                    <div class="blog-sec">
+                        <div class="row">
+                                {% for events in event %}
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="g-post-classic">
+                                    <figure class="events-pg">
+                                      <img alt="" src="/static/images/{{events.image}}">
+                                    </figure>
+                                    <div class="g-post-meta">
+                                        <div class="post-title">
+                                            <h4><a title="" href="{{events.event_slug}}">{{events.Title}}</a></h4>
+                                             <span class="p-date">{{events.date_published}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                 {% include 'ads.html'%}
+                 <!-- sidebar -->
+            </div>
+            <button class="btn-view btn-load-more">Load More</button>
+        </div>
+    </div>
+    
+</section>
+
+
+{% endblock %}

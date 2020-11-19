@@ -1,0 +1,16 @@
+
+  <div class="col-lg-3">
+        <aside class="sidebar static main-top">
+		 	{% for adds in ads%}
+                <div class="widget">
+					<div class="">
+					    <a href="{{adds.link}}">
+    	                    <img alt="" src="/static/images/{{adds.image}}" class="dekstop-data">
+                            <img alt="" src="/static/images/{{adds.m_img}}" class="mobile-data">
+					    </a>
+					</div>		
+				</div>
+				{% endfor %}
+        </aside>
+    </div>
+

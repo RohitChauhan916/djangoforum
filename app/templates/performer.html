@@ -1,0 +1,50 @@
+{% extends 'header.html' %}
+{% block content %}
+{% include "navbar.html" %}
+<img src="/static/images/performer-banner.jpg">
+<section>
+            <div class="gap gray-bg">
+                <div class="container">
+                    <div class="row" id="page-contents">
+                    {% for performer in perform%}
+                        <div class="col-lg-12">
+                            <div class="faq-area">
+                                <div class="accordion" id="accordion">
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h5 class="mrgn-padding">
+                                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{performer.p_id}}" aria-expanded="true" aria-controls="collapseOne">
+                                                    {{performer.title}}
+                                                </button>
+                                            </h5>
+                                        </div>
+
+                                        <div id="{{performer.p_id}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                {% for  comp in performer.company_set.all%}
+                                                    <div class="col-lg-4 col-sm-6">
+                                                        <div class="our-teambox">
+                                                            <figure>
+                                                                <img src="/static/images/{{comp.image}}" alt=""></figure>
+                                                            <div class="team-info">
+                                                                <h4>{{comp.name}}</h4>
+                                                                <span>{{comp.company_name}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                   {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}

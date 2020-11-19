@@ -1,0 +1,42 @@
+{% extends 'header.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+<img src="/static/images/annoucement-banner.jpg">
+
+<section>
+<div class="gap gray-bg">
+<div class="container">
+<div class="row" id="page-contents">
+
+<div class="col-lg-9">
+<div class="faq-area">
+{% for announce in announced%}
+<div class="accordion" id="accordion">
+<div class="card">
+<div class="card-header" id="headingOne">
+ <h5 class="mb-0">
+<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{announce.an_id}}" aria-expanded="true" aria-controls="collapseOne">
+{{announce.title}}
+</button>
+ </h5>
+</div>
+
+<div id="{{announce.an_id}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+ <div class="card-body">
+{{announce.desc | safe}}
+ </div>
+</div>
+ </div>
+ {% endfor %}
+ </div>
+  
+ </div>
+</div>
+</div>
+
+                      {% include 'ads.html'%}
+</div>
+</div>
+</div>
+</section>
+{% endblock  %}

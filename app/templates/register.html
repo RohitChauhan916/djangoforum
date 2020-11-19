@@ -1,0 +1,158 @@
+{% extends "header.html"%}
+{% block content %}
+<!--<div class="se-pre-con"></div>-->
+    <div class="theme-layout">
+        <div class="container-fluid pdng0">
+            <div class="row merged">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="land-featurearea">
+                        <div class="land-meta">
+                            <!--<h1>Aipl Parivaar</h1>-->
+                            <img src='/static/images/logo.png' />
+                            
+                            <!--<div class="friend-logo">
+                                <span>
+                                    <img src="images/wink.png" alt=""></span>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="login-reg-bg">
+                        <div class="log-reg-area sign">
+                            <h2 class="log-title">Login</h2>
+                           <!-- <p>
+                                Don’t use Winku Yet? <a href="#" title="">Take the tour</a> or <a href="#" title="">Join now</a>
+                            </p>-->
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    {{log.username}}
+                                    <label class="control-label" for="input">Username</label><i class="mtrl-select"></i>
+                                </div>
+                                <div class="form-group">
+                                    {{log.password}}
+                                    <label class="control-label" for="input">Password</label><i class="mtrl-select"></i>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked="checked" /><i class="check-box"></i>Always Remember Me.
+                                    </label>
+                                </div>
+                                <a href="#" title="" class="forgot-pwd">Forgot Password?</a>
+                                <div class="submit-btns">
+                                    <button class="mtr-btn login" type="submit"><span>Login</span></button>
+                                    <button class="mtr-btn signup" type="button"><span>Register</span></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="log-reg-area reg">
+                            <h2 class="log-title">Register</h2>
+                           <!-- <p>
+                                Don’t use Winku Yet? <a href="#" title="">Take the tour</a> or <a href="#" title="">Join now</a>
+                            </p>-->
+                            <form method="POST">
+                            {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="text" name="first_name" maxlength='150' autofocus required id="id_first_name" />
+                                    <label class="control-label" for="input">*First Name</label><i class="mtrl-select"></i>
+                                </div>
+                                 <div class="form-group">
+                                    <input type="text" name="last_name" maxlength='150' autofocus required id="id_last_name" />
+                                    <label class="control-label" for="input">*Last Name</label><i class="mtrl-select"></i>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="username" maxlength='150' autofocus required id="id_username" />
+                                    <label class="control-label" for="input">*User Name</label><i class="mtrl-select"></i>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" maxlength='150' autofocus required id="id_email" />
+                                    <label class="control-label" for="input">*E-mail</label><i class="mtrl-select"></i>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password1" maxlength='150' pattern="(?=.*\d)(?=.*[A-Z]).{10,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" autofocus required id="password1" />
+                                    <label class="control-label" for="input">*Password</label><i class="mtrl-select"></i>
+                                </div>
+                                <div id="message">
+  <h3>Password must contain the following:</h3>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+  <p id="length" class="invalid">Minimum <b>10 characters</b></p>
+</div>
+                                 <div class="form-group">
+                                    <input type="password" name="password2" maxlength='150' autofocus required id="password2" />
+                                    <label class="control-label" for="input">*Re-Type Password</label><i class="mtrl-select"></i>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="emp_code" maxlength='150' autofocus required id="id_emp_code" />
+                                    <label class="control-label" for="input">*Employee code</label><i class="mtrl-select"></i>
+                                </div>
+                                
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked="checked" /><i class="check-box"></i>Accept Terms & Conditions ?
+                                    </label>
+                                </div>
+                                <a href="#" title="" class="already-have">Already have an account</a>
+                                <div class="submit-btns">
+                                    <input class="signup-rgstr signup" type="submit" name="submit" value="Register">
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+var myInput = document.getElementById("password1");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  
+  // Validate length
+  if(myInput.value.length >= 10) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends 'homepage.html' %}
+{% block content %}
+{%include 'navbar.html' %}
+<section>
+		<div class="feature-photo">
+			<figure>
+            {% if profile.cover_photo%}
+            <img src="/static/images/{{profile.cover_photo}}" alt="">
+            {% else %}
+            <img src="/static/images/cover/cover.jpg" alt="">
+            {% endif %}
+            </figure>
+			<div class="container-fluid">
+				<div class="row merged">
+					<div class="col-lg-2 col-sm-3 col-xs-5">
+						<div class="user-avatar">
+							<figure>
+                            {% if profile.profile_photo %}
+								<img src="/static/images/{{profile.profile_photo}}" alt="">
+                                {% else %}
+                                <img src="/static/images/Profile/blank_profile.png" alt="">
+                                {% endif %}
+							</figure>
+						</div>
+					</div>
+					<div class="col-lg-10 col-sm-9 col-xs-7">
+						<div class="timeline-info">
+							<ul>
+								<li class="admin-name">
+								  <h5>{{profile.user.first_name}} {{profile.user.last_name}}</h5>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- top area -->
+<section>
+<div class="gap gray-bg">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="row merged20" id="page-contents">
+<div class="col-lg-3">
+<aside class="sidebar static">
+
+<div class="widget stick-widget">
+<h4 class="widget-title">Edit info</h4>
+<ul class="naves">
+<li>
+<i class="ti-info-alt"></i>
+<a href="#" title="">Basic info</a>
+</li>
+<li>
+<i class="ti-lock"></i>
+<a href="#" title="">change password</a>
+</li>
+                                            <li>
+<i class="ti-mouse-alt"></i>
+<a href="#" title="">Timeline</a>
+</li>
+                                            <li>
+<i class="ti-magnet"></i>
+<a href="#" title="">News Feed</a>
+</li>
+</ul>
+</div><!-- settings widget -->
+</aside>
+</div><!-- sidebar -->
+<div class="col-lg-6">
+<div class="central-meta">
+<div class="editing-info">
+<h5 class="f-title"><i class="ti-info-alt"></i> Edit Basic Information</h5>
+<form method="post" action="/update/{{user.id}}" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="form-group">
+ <input type="text" id="id_emp_code" name="emp_code" value="{{profile.emp_code}}"/>
+ <label class="control-label" for="input">EMP Code</label><i class="mtrl-select"></i>
+</div>
+<div class="form-group">
+ <input type="text" id="id_phone_number" name="phone_number" value="{{profile.phone_number}}"/>
+ <label class="control-label" for="input">Phone No.</label><i class="mtrl-select"></i>
+</div>
+<div class="form-group">
+ <input type="date" id="id_dob" name="dob" value="{{profile.dob}}"/>
+ <label class="control-label" for="input">D.O.B</label><i class="mtrl-select"></i>
+</div>
+
+<div class="form-group">
+ <input type="text" id="id_location" name="location" value="{{profile.location}}"/>
+ <label class="control-label" for="input">location</label><i class="mtrl-select"></i>
+</div>
+
+<div class="form-group">
+ <input type="text" id="id_department" name="department" value="{{profile.department}}"/>
+ <label class="control-label" for="input">Department</label><i class="mtrl-select"></i>
+</div>
+
+<div class="form-group">
+ <textarea rows="4" id="textarea" id="id_about" name="about" value="{{profile.about}}">{{profile.about}}</textarea>
+ <label class="control-label" for="textarea">About Me</label><i class="mtrl-select"></i>
+</div>
+
+<div class="form-group">
+ <input type="text" id="id_web_address" name="web_address" value="{{profile.web_address}}">
+ <label class="control-label" for="textarea">Web Address</label><i class="mtrl-select"></i>
+</div>
+
+<div class="form-group">
+ <input type="text" id="id_hire_date" name="hire_date" value="{{profile.hire_date}}">
+ <label class="control-label" for="textarea">hire_date</label><i class="mtrl-select"></i>
+</div>
+
+<div class="form-group">
+ <input type="text" id="id_gender" name="gender" value="{{profile.gender}}">
+ <label class="control-label" for="textarea">Gender</label><i class="mtrl-select"></i>
+</div>
+
+<div class="form-group">
+ <input type="text" id="id_zone" name="zone" value="{{profile.zone}}"></textarea>
+ <label class="control-label" for="textarea">Zone</label><i class="mtrl-select"></i>
+</div>
+
+<div class="form-group">
+ <input type="text" id="id_aniversary" name="aniversary" value="{{profile.aniversary}}">
+ <label class="control-label" for="textarea">Aniversary</label><i class="mtrl-select"></i>
+</div>
+
+<div class="form-group">
+ <input type="text" id="id_designation" name="designation" value="{{profile.designation}}">
+ <label class="control-label" for="textarea">Designation</label><i class="mtrl-select"></i>
+</div>
+
+<div class="form-group">
+ <input type="text" id="id_reporting_to" name="reporting_to" value="{{profile.reporting_to}}">
+ <label class="control-label" for="textarea">Reporting To</label><i class="mtrl-select"></i>
+</div>
+</div>
+
+<div class="central-meta">
+<div class="editing-info">
+<h5 class="f-title"><i class="ti-info-alt"></i> Edit Profile Photo</h5>
+<div class="form-group">
+ <input type="file" id="profile_photo" name="profile_photo">
+</div>
+</div>
+</div>
+<div class="central-meta">
+<div class="editing-info">
+<h5 class="f-title"><i class="ti-info-alt"></i> Edit Cover Photo</h5>
+<div class="form-group">
+  <input type="file" id="cover_photo" name="cover_photo">
+</div>
+</div>
+
+<div class="submit-btns">
+<button type="button" class="mtr-btn"><span>Cancel</span></button>
+<button type="submit" name="submit" class="mtr-btn"><span>Update</span></button>
+</div>
+</form>
+</div>
+</div>
+
+</div>
+{% include 'ads.html'%}
+</div>
+
+</section>
+{% endblock  %}
