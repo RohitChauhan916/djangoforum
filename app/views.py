@@ -59,7 +59,7 @@ def homepage(request):
                 discuss = request.POST.get('description')
                 image = form.cleaned_data.get('photo')
                 if request.user.is_authenticated:
-                    user_name = request.user.username
+                    user_name = request.user
                     form, created = discussion.objects.get_or_create(username=user_name, description=discuss, photo=image)
                 form.save()
         else:
@@ -67,8 +67,9 @@ def homepage(request):
         post = discussion.objects.all().order_by('-date_published')
         uservalue = request.user
         profile_photo = UserProfile.objects.get(user=uservalue)
+        pic = discussion.objects.filter(profile=profile_photo)
         banners = banner.objects.all()
-        return render(request, "homepage.html", {'profile':form, 'post':post, 'profiles':profile_photo, 'banners':banners})
+        return render(request, "homepage.html", {'profile':form, 'post':post, 'profiles':profile_photo, 'banners':banners, 'pic':pic})
     else:
         return redirect("/register")
 

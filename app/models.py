@@ -33,6 +33,7 @@ class discussion(models.Model):
     description = models.TextField(max_length=200, verbose_name="Description", blank=True, null=True)
     photo = models.ImageField(verbose_name="Image", upload_to='content', blank=True, null=True)
     date_published = models.DateTimeField(auto_now_add=True)
+    profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.description
@@ -93,7 +94,7 @@ class gallery(models.Model):
 class galleryPhoto(models.Model):
     gp_id = models.AutoField(primary_key=True)
     gallery = models.ForeignKey(gallery, on_delete=models.CASCADE)
-    photo = models.ImageField(verbose_name="Gallery Photo", upload_to="Gallery", null=True, blank=True)
+    photo = models.FileField(verbose_name="Gallery Photo", upload_to="Gallery", null=True, blank=True)
 
     def __str__(self):
         return str(self.gp_id)

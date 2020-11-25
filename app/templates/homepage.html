@@ -112,11 +112,11 @@
 								<div class="central-meta item">
 									<div class="user-post">
 										<div class="friend-info">
-										{% for profil in prof.profiles_set.all %}
+											{% if pic.profile %}
 											<figure>
-												<img src="/static/images/{{profil.profile_photo}}" alt="" width="200px" height="200px">
+												<img src="/static/images/{{pic.profile}}" alt="" width="200px" height="200px">
 											</figure>
-											{% endfor %}
+											{% endif %}
 											<div class="friend-name">
 												<ins><a href="#" title="">{{prof.username}}</a></ins>
 												<span>{{prof.date_published}}</span>
