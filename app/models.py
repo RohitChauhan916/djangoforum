@@ -33,7 +33,7 @@ class discussion(models.Model):
     description = models.TextField(max_length=200, verbose_name="Description", blank=True, null=True)
     photo = models.ImageField(verbose_name="Image", upload_to='content', blank=True, null=True)
     date_published = models.DateTimeField(auto_now_add=True)
-    profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return self.description
@@ -43,19 +43,13 @@ class Likes(models.Model):
     discuss = models.ForeignKey(discussion, on_delete=models.CASCADE)
 
 class suggestion(models.Model):
-    name = models.CharField(verbose_name="Full Name", max_length=200, null=True, blank=True)
-    phone = models.CharField(verbose_name="Phone Number", max_length=200, null=True, blank=True)
     emp_code = models.CharField(verbose_name="Emp Code", max_length=200, null=True, blank=True)
-    departmant = models.CharField(verbose_name="Department", max_length=200, null=True, blank=True)
-    designation = models.CharField(verbose_name="Designation", max_length=200, null=True, blank=True)
-    zone = models.CharField(verbose_name="Zone", max_length=200, null=True, blank=True)
-    reporting_to = models.CharField(verbose_name="Reporting-to", max_length=200, blank=True, null=True)
     subject = models.CharField(verbose_name="Subject", max_length=200, blank=True, null=True)
     message = models.TextField(verbose_name="Message", max_length=500, null=True, blank=True)
     date_published = models.DateTimeField(default=datetime.now())
 
     def __str__(self):
-        return self.name
+        return self.subject
 
 
 class advertisements(models.Model):
@@ -122,10 +116,3 @@ class banner(models.Model):
     def __str__(self):
         return str(self.img_id)
         
-
-class userPhoto(models.Model):
-    up_id = models.AutoField(primary_key=True)
-    photos = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return str(self.up_id)

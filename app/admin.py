@@ -20,7 +20,7 @@ class CustomUserAdmin(UserAdmin):
         return super(CustomUserAdmin, self).get_inline_instances(request, obj)
 
 class CustomSuggestionAdmin(admin.ModelAdmin):
-    list_display = ('name','emp_code','subject','date_published')
+    list_display = ('emp_code','subject','date_published')
 
 class galleryphotoInline(admin.TabularInline):
     model = galleryPhoto

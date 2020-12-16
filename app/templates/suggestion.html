@@ -13,10 +13,17 @@
                                         <div class="editing-info">
                                             <h5 class="f-title"><i class="ti-info-alt"></i>Terms & Conditions</h5>
                                             <ul>
-                                                <li>
-                                                    aipl parivaar
-                                                </li>
-                                                <li>aipl</li>
+                                                <li>You can give as many suggestions, you want</li>
+                                                <li>Each suggestion should be on a separate sheet</li>
+                                                <li>Please mention your Name, Designation, Office location</li>
+                                                <li>The suggestion should be in English or Hindi language only</li>
+                                                <li>It should be simple and easy to understand</li>
+                                                <li>If posibble, assign responsibility</li>
+                                                <li>It should clearly define - "what should be done" and "what will be the result"</li>
+                                                <li>Please do not preach</li>
+                                                <li>It should not be a complaint</li>
+                                                <li>It should not be about Salary</li>
+                                                <li>It should be IMPLEMENTABLE</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -29,38 +36,10 @@
 
                                             <form method="post">
                                             {% csrf_token %}
-                                                <div class="form-group half">
-                                                   <input type="text" name="name" maxlength="200" id="id_name" required>
-                                                    <label class="control-label" for="input">Full Name</label><i class="mtrl-select"></i>
-                                                </div>
 
                                                 <div class="form-group half">
                                                     <input type="text" name="emp_code" maxlength="200" id="id_emp_code" required>
                                                     <label class="control-label" for="input">Employee Code</label><i class="mtrl-select"></i>
-                                                </div>
-
-                                                <div class="form-group half">
-                                                    <input type="text" name="phone" maxlength="200" id="id_phone" required>
-                                                    <label class="control-label" for="input">Phone No.</label><i class="mtrl-select"></i>
-                                                </div>
-
-                                                <div class="form-group half">
-                                                    <input type="text" name="departmant" maxlength="200" id="id_departmant" required>
-                                                    <label class="control-label" for="input">Department</label><i class="mtrl-select"></i>
-                                                </div>
-                                                <div class="form-group half">
-                                                    <input type="text" name="designation" maxlength="200" id="id_designation" required>
-                                                    <label class="control-label" for="input">Designation</label><i class="mtrl-select"></i>
-                                                </div>
-
-                                                <div class="form-group half">
-                                                    <input type="text" name="reporting_to" maxlength="200" id="id_reporting_to" required>
-                                                    <label class="control-label" for="input">Supervisor Name</label><i class="mtrl-select"></i>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <input type="text" name="zone" maxlength="200" id="id_zone" required>
-                                                    <label class="control-label" for="input">Zone</label><i class="mtrl-select"></i>
                                                 </div>
 
                                                 <div class="form-group">

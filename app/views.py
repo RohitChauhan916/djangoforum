@@ -60,16 +60,15 @@ def homepage(request):
                 image = form.cleaned_data.get('photo')
                 if request.user.is_authenticated:
                     user_name = request.user
-                    form, created = discussion.objects.get_or_create(username=user_name, description=discuss, photo=image)
+                    form, created = discussion.objects.get_or_create(username=str(user_name), description=discuss, photo=image)
                 form.save()
         else:
             form = discussionForm()
         post = discussion.objects.all().order_by('-date_published')
         uservalue = request.user
         profile_photo = UserProfile.objects.get(user=uservalue)
-        pic = discussion.objects.filter(profile=profile_photo)
         banners = banner.objects.all()
-        return render(request, "homepage.html", {'profile':form, 'post':post, 'profiles':profile_photo, 'banners':banners, 'pic':pic})
+        return render(request, "homepage.html", {'profile':form, 'post':post, 'profiles':profile_photo, 'banners':banners})
     else:
         return redirect("/register")
 
@@ -123,16 +122,10 @@ def suggest(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             form = SuggestionForm(request.POST)
-            fullname = request.POST.get('name')
             emp = request.POST.get('emp_code')
-            phone = request.POST.get('phone')
-            departmant = request.POST.get('departmant')
-            designation = request.POST.get('designation')
-            report = request.POST.get('reporting_to')
-            zone = request.POST.get('zone')
             subject = request.POST.get('subject')
             messages = request.POST.get('message')
-            message = "Name" + " - " + fullname + "\n" + "EMP-Code" + " - " + emp + "\n" + "Phone" + " - " + phone + "\n" + "Department" + " - " + departmant + "\n" + "Designation" + " - " + designation + "\n" + "Report" + " - " + report + "\n" + "Zone" + " - " + zone + "\n" + "Subject" + " - " + subject + "\n" + "Message" + " - " + messages
+            message = "EMP-Code" + " - " + emp + "\n" + "Subject" + " - " + subject + "\n" + "Message" + " - " + messages
             send_mail('Suggestion Form', message, settings.EMAIL_HOST_USER,['rohitc.aiplbrandbuzz@gmail.com'], fail_silently=False)
 
             if form.is_valid():
@@ -179,4 +172,7 @@ def offers(request):
     if request.user.is_authenticated:
         return render(request,'offers.html')
 
+def navbarView(request):
+    if request.user.is_authenticated:
+        return render(request,'navbar.html')
         

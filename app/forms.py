@@ -38,5 +38,5 @@ class SuggestionForm(forms.ModelForm):
 
     class Meta:
         model = suggestion
-        fields = ('name','phone','emp_code','departmant','designation','zone','reporting_to','subject','message',)
+        fields = ('emp_code','subject','message',)
 

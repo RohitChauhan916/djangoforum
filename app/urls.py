@@ -4,10 +4,12 @@ from . import views
 from django.contrib.auth import views as auth_views
 from django.conf import settings 
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
 app_name='app'
 
 urlpatterns = [
+   path('sw.js', (TemplateView.as_view(template_name="sw.js", content_type='application/javascript', )), name='sw.js'),
    path('',views.homepage, name="homepage"),
    path('register/',views.register, name="register"),
    path('profile/<int:id>',views.profile, name="profile"),
@@ -21,6 +23,7 @@ urlpatterns = [
    path('event/<single_slug>',views.single_slug, name="single_slug"),
    path('perform/',views.perfomerView, name="perform"),
    path('offers/',views.offers, name="offers"),
+   path('navbar/',views.navbarView, name="navbar"),
    path("logout", views.logout_req, name="logout"),
    
    path('password_reset/', auth_views.PasswordResetView.as_view(template_name="password_reset_form.html"), name="password_reset"),
@@ -34,4 +37,4 @@ urlpatterns = [
 
 if settings.DEBUG: 
         urlpatterns += static(settings.MEDIA_URL, 
-                              document_root=settings.MEDIA_ROOT) 
+                              document_root=settings.MEDIA_ROOT)
