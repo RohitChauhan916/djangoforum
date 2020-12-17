@@ -87,7 +87,7 @@ class gallery(models.Model):
 
 class galleryPhoto(models.Model):
     gp_id = models.AutoField(primary_key=True)
-    gallery = models.ForeignKey(gallery, on_delete=models.CASCADE)
+    galleries = models.ForeignKey(gallery, on_delete=models.CASCADE)
     photo = models.FileField(verbose_name="Gallery Photo", upload_to="Gallery", null=True, blank=True)
 
     def __str__(self):
