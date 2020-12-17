@@ -74,7 +74,7 @@ class event(models.Model):
         return self.Title
 
 class gallery(models.Model):
-    event_for = models.ForeignKey(event, on_delete=models.CASCADE)
+    event_for = models.ForeignKey(event, on_delete=models.SET_DEFAULT, default=1)
     title = models.CharField(max_length=255, verbose_name="Gallery Title", null=True, blank=True)
     desc = models.TextField()
 
