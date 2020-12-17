@@ -39,6 +39,7 @@ class discussion(models.Model):
     def __str__(self):
         return self.description
 
+
 class suggestion(models.Model):
     emp_code = models.CharField(verbose_name="Emp Code", max_length=200, null=True, blank=True)
     subject = models.CharField(verbose_name="Subject", max_length=200, blank=True, null=True)
@@ -82,7 +83,7 @@ class gallery(models.Model):
         return self.title
 
 class galleryPhoto(models.Model):
-    gp_id = models.AutoField(primary_key=True, null=True)
+    gp_id = models.AutoField(primary_key=True, null=False)
     gallery = models.ForeignKey(gallery, on_delete=models.CASCADE)
     photo = models.FileField(verbose_name="Gallery Photo", upload_to="Gallery", null=True, blank=True)
 
