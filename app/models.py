@@ -74,7 +74,7 @@ class event(models.Model):
         return self.Title
 
 class gallery(models.Model):
-    event_for = models.ForeignKey(event, on_delete=models.CASCADE)
+    event_for = models.ForeignKey(event, on_delete=models.SET_DEFAULT)
     title = models.CharField(max_length=255, verbose_name="Gallery Title", null=True, blank=True)
     desc = models.TextField()
 
@@ -82,7 +82,7 @@ class gallery(models.Model):
         return self.title
 
 class galleryPhoto(models.Model):
-    gp_id = models.AutoField(primary_key=True)
+    gp_id = models.AutoField(primary_key=True, null=True)
     gallery = models.ForeignKey(gallery, on_delete=models.CASCADE)
     photo = models.FileField(verbose_name="Gallery Photo", upload_to="Gallery", null=True, blank=True)
 
