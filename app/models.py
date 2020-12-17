@@ -30,6 +30,7 @@ class UserProfile(models.Model):
 
 
 class discussion(models.Model):
+    discuss_id = models.AutoField(unique=True)
     username = models.CharField(null=True, max_length=100)
     description = models.TextField(max_length=200, verbose_name="Description", blank=True, null=True)
     photo = models.ImageField(verbose_name="Image", upload_to='content', blank=True, null=True)
