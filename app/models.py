@@ -33,7 +33,7 @@ class discussion(models.Model):
     discuss_id = models.AutoField(primary_key=True, null=False)
     username = models.CharField(null=True, max_length=100)
     description = models.TextField(max_length=200, verbose_name="Description", blank=True, null=True)
-    photo = models.ImageField(verbose_name="Image", upload_to='content', blank=True, null=True)
+    photo = models.ImageField(verbose_name="Image", upload_to='content', null=True)
     date_published = models.DateTimeField(auto_now_add=True)
     profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True)
     
