@@ -39,9 +39,6 @@ class discussion(models.Model):
     def __str__(self):
         return self.description
 
-class Likes(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    discuss = models.ForeignKey(discussion, on_delete=models.CASCADE)
 
 class suggestion(models.Model):
     emp_code = models.CharField(verbose_name="Emp Code", max_length=200, null=True, blank=True)
