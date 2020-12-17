@@ -30,7 +30,6 @@ class UserProfile(models.Model):
 
 
 class discussion(models.Model):
-    discuss_id = models.AutoField(primary_key=True, null=False)
     username = models.CharField(null=True, max_length=100)
     description = models.TextField(max_length=200, verbose_name="Description", blank=True, null=True)
     photo = models.ImageField(verbose_name="Image", upload_to='content', blank=True, null=True)
@@ -41,12 +40,10 @@ class discussion(models.Model):
         return self.description
 
 class Likes(models.Model):
-    like_id = models.AutoField(primary_key=True, null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     discuss = models.ForeignKey(discussion, on_delete=models.CASCADE)
 
 class suggestion(models.Model):
-    suggest_id = models.AutoField(primary_key=True, null=False)
     emp_code = models.CharField(verbose_name="Emp Code", max_length=200, null=True, blank=True)
     subject = models.CharField(verbose_name="Subject", max_length=200, blank=True, null=True)
     message = models.TextField(verbose_name="Message", max_length=500, null=True, blank=True)
@@ -65,7 +62,6 @@ class advertisements(models.Model):
         return str(self.a_id)
 
 class announce(models.Model):
-    an_id = models.AutoField(primary_key=True, null=False)
     title = models.CharField(verbose_name="Announcements", max_length=250, null=True, blank=True)
     desc = RichTextUploadingField()
     
@@ -73,7 +69,6 @@ class announce(models.Model):
         return self.title
     
 class event(models.Model):
-    event_id = models.AutoField(primary_key=True, null=False)
     Title = models.CharField(max_length=255, verbose_name="Event Title", null=True, blank=True)
     image = models.ImageField(verbose_name="Event Photo", upload_to="Event", null=True, blank=True)
     event_slug = models.CharField(max_length=255)
@@ -83,7 +78,6 @@ class event(models.Model):
         return self.Title
 
 class gallery(models.Model):
-    gallery_id = models.AutoField(primary_key=True, null=False)
     event_for = models.ForeignKey(event, on_delete=models.SET_DEFAULT, default=1)
     title = models.CharField(max_length=255, verbose_name="Gallery Title", null=True, blank=True)
     desc = models.TextField()
@@ -100,14 +94,12 @@ class galleryPhoto(models.Model):
         return str(self.gp_id)
 
 class performer(models.Model):
-    p_id = models.AutoField(primary_key=True, null=False)
     title = models.CharField(max_length=255, verbose_name="Title", null=True, blank=True)
 
     def __str__(self):
         return self.title
 
 class company(models.Model):
-    c_id = models.AutoField(primary_key=True, null=False)
     perform = models.ForeignKey(performer, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, verbose_name="Performer Name", null=True, blank=True)
     image = models.ImageField(upload_to="Performer", null=True, blank=True)
