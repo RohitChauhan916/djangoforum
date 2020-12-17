@@ -117,9 +117,9 @@ WSGI_APPLICATION = 'happiness.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'aipl',
-        'USER': 'parivaar_admin',
-        'PASSWORD': 'Parivaar@123',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '@123',
         'HOST': 'localhost',
         'PORT': '',
     }
