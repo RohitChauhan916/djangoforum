@@ -7,7 +7,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 class UserProfile(models.Model):
-    UserProfile_id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, unique=True, on_delete=models.CASCADE, null=True)
     emp_code = models.CharField(verbose_name="EMP Code", max_length=100, blank=True, null=True, unique=True)
     profile_photo = models.ImageField(verbose_name="Profile Photo", upload_to='Profile', blank=True, null=True)
