@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '%q1lh5h#y*80i6_024l26dk^&z%5-d!j2ee1tan#5f16nx%3zh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'rohitc.aiplbrandbuzz@gmail.com'
@@ -106,23 +106,23 @@ WSGI_APPLICATION = 'happiness.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+#if DEBUG:
+#    DATABASES = {
+#       'default': {
+#           'ENGINE': 'django.db.backends.sqlite3',
+#           'NAME': BASE_DIR / 'db.sqlite3',
+#        }
+#    }
+#else:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'aipl',
+        'USER': 'parivaar_admin',
+        'PASSWORD': 'Parivaar@123',
+        'HOST': 'localhost',
+        'PORT': '',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'aipl',
-            'USER': 'parivaar_admin',
-            'PASSWORD': 'Parivaar@123',
-            'HOST': 'localhost',
-            'PORT': '',
-        }
 } 
 
 # Password validation
