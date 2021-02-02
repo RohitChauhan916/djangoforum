@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import UserProfile, discussion, suggestion
+from .models import UserProfile, discussion, suggestion, Comment
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -39,4 +39,3 @@ class SuggestionForm(forms.ModelForm):
     class Meta:
         model = suggestion
         fields = ('emp_code','subject','message',)
-

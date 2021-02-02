@@ -25,22 +25,24 @@ class UserProfile(models.Model):
     cover_photo = models.ImageField(verbose_name="Cover", upload_to="cover", blank=True, null=True)
     
     def __str__(self):
-        return str(self.emp_code)
+        return str(self.user)
 
 
 class discussion(models.Model):
+    discuss_id = models.AutoField(primary_key=True)
     username = models.CharField(null=True, max_length=100)
     description = models.TextField(max_length=200, verbose_name="Description", blank=True, null=True)
     photo = models.ImageField(verbose_name="Image", upload_to='content', blank=True, null=True)
     date_published = models.DateTimeField(auto_now_add=True)
     profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True)
-    
+    liked = models.ManyToManyField(User, blank=True, related_name='Likes', default=None)
+    commented = models.ManyToManyField(User, blank=True, related_name='Comment', default=None)
+
     def __str__(self):
         return self.description
-
-class Likes(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    discuss = models.ForeignKey(discussion, on_delete=models.CASCADE)
+    
+    def num_likes(self):
+        return self.liked.all().count()
 
 class suggestion(models.Model):
     emp_code = models.CharField(verbose_name="Emp Code", max_length=200, null=True, blank=True)
@@ -87,7 +89,7 @@ class gallery(models.Model):
 
 class galleryPhoto(models.Model):
     gp_id = models.AutoField(primary_key=True)
-    galleries = models.ForeignKey(gallery, on_delete=models.CASCADE)
+    gallery = models.ForeignKey(gallery, on_delete=models.CASCADE)
     photo = models.FileField(verbose_name="Gallery Photo", upload_to="Gallery", null=True, blank=True)
 
     def __str__(self):
@@ -115,4 +117,28 @@ class banner(models.Model):
     img = models.ImageField(upload_to="Banner", verbose_name="Banner", null=True, blank=True)
     def __str__(self):
         return str(self.img_id)
+
+LIKE_CHOICES = (
+    ('Like', 'Like'),
+    ('Unlike', 'Unlike'),
+)
         
+class Like(models.Model):
+    userlikes = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    discuss = models.ForeignKey(discussion, on_delete=models.CASCADE, blank=True, null=True)
+    value = models.CharField(choices=LIKE_CHOICES, max_length=8)
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.userlikes)
+
+class Comment(models.Model):
+    userComment = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    discuss = models.ForeignKey(discussion, on_delete=models.CASCADE, blank=True, null=True)
+    comment = models.CharField(max_length=255, verbose_name="Comment", null=True, blank=True)
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.comment

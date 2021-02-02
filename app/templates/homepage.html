@@ -127,94 +127,62 @@
 												{% if prof.photo %}
 												<img src="/static/images/{{prof.photo}}" alt="" width="300px" height="300px">
 												{% endif %}
-												<!--<div class="we-video-info">
+												<div class="we-video-info">
 													<ul>
-														<li>
+														<!--<li>
 															<span class="comment" data-toggle="tooltip" title="Comments">
 																<i class="fa fa-comments-o"></i>
 																<ins>52</ins>
 															</span>
-														</li>
+														</li>-->
 														<li>
 															<span class="like" data-toggle="tooltip" title="like">
-																<i class="ti-heart"></i>
-																<ins>2.2k</ins>
+															<form action="{% url 'app:like_unlike_post' %}" method="POST">
+																{% csrf_token %}
+																<input type="hidden" name="prof_id" value="{{prof.discuss_id}}">
+																{% if user not in prof.liked.all %}
+																<button type="submit" class="ti-heart">Like</button>
+																{% else %}
+																<button type="submit" class="ti-heart">UnLike</button>
+																{% endif %}
+																</form>
 															</span>
 														</li>
-														
-														
 													</ul>
-												</div>-->
+												</div>
 											</div>
 										</div>
-										<!--<div class="coment-area">
+										<div class="coment-area">
 											<ul class="we-comet">
+											{% for disc in prof.comment_set.all %}
 												<li>
 													<div class="comet-avatar">
 														<img src="images/resources/comet-1.jpg" alt="">
 													</div>
 													<div class="we-comment">
 														<div class="coment-head">
-															<h5><a href="time-line.html" title="">Jason borne</a></h5>
-															<span>1 year ago</span>
+															<h5><a href="time-line.html" title=""></a>{{disc.userComment}}</h5>
+															<span>{{disc.created}}</span>
 															<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
 														</div>
-														<p>we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post</p>
-													</div>
-													<ul>
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/comet-2.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<div class="coment-head">
-																	<h5><a href="time-line.html" title="">alexendra dadrio</a></h5>
-																	<span>1 month ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																</div>
-																<p>yes, really very awesome car i see the features of this car in the official website of <a href="#" title="">#Mercedes-Benz</a> and really impressed :-)</p>
-															</div>
-														</li>
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/comet-3.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<div class="coment-head">
-																	<h5><a href="time-line.html" title="">Olivia</a></h5>
-																	<span>16 days ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																</div>
-																<p>i like lexus cars, lexus cars are most beautiful with the awesome features, but this car is really outstanding than lexus</p>
-															</div>
-														</li>
-													</ul>
-												</li>
-												<li>
-													<div class="comet-avatar">
-														<img src="images/resources/comet-1.jpg" alt="">
-													</div>
-													<div class="we-comment">
-														<div class="coment-head">
-															<h5><a href="time-line.html" title="">Donald Trump</a></h5>
-															<span>1 week ago</span>
-															<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-														</div>
-														<p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel
-															<i class="em em-smiley"></i>
-														</p>
+														<p>{{disc.comment}}</p>
 													</div>
 												</li>
+												{% endfor %}
 												<li>
 													<a href="#" title="" class="showmore underline">more comments</a>
 												</li>
 												<li class="post-comment">
 													<div class="comet-avatar">
-														<img src="images/resources/comet-1.jpg" alt="">
+													{% if prof.photo %}
+												<img src="/static/images/{{prof.photo}}" alt="" width="300px" height="300px">
+												{% endif %}
 													</div>
 													<div class="post-comt-box">
-														<form method="post">
-															<textarea placeholder="Post your comment"></textarea>
+														<form action="{% url 'app:comment_post' %}" method="POST">
+														{% csrf_token %}
+														<input type="hidden" name="prof_id" value="{{prof.discuss_id}}">
+															<textarea placeholder="Post your comment" name="comment_post" id="{{prof.discuss_id}}"></textarea>
 															<div class="add-smiles">
 																<span class="em em-expressionless" title="add icon"></span>
 															</div>
@@ -237,7 +205,7 @@
 													</div>
 												</li>
 											</ul>
-										</div>-->
+										</div>
 									</div>
                                
 								</div>

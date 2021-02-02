@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from .models import UserProfile, discussion, suggestion, advertisements, announce, event, gallery, galleryPhoto, performer, company, banner
+from .models import UserProfile, discussion, suggestion, advertisements, announce, event, gallery, galleryPhoto, performer, company, banner,Like,Comment
 # Register your models here.
 
 class ProfileInline(admin.StackedInline):
@@ -46,5 +46,7 @@ admin.site.register(performer,performerAdmin)
 admin.site.register(advertisements)
 admin.site.register(announce)
 admin.site.register(event)
+admin.site.register(Like)
+admin.site.register(Comment)
 admin.site.register(gallery,galleryAdmin)
 admin.site.register(banner)

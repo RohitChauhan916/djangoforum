@@ -5,7 +5,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import SignUpForm, UserExtend, ProfilePhoto, discussionForm, SuggestionForm, EditProfile
 from django.core.files.base import ContentFile 
-from .models import UserProfile, discussion, suggestion, advertisements, announce, event, galleryPhoto, gallery, performer, company, banner
+from .models import UserProfile, discussion, suggestion, advertisements, announce, event, galleryPhoto, gallery, performer, company, banner,Like, Comment
 from django.core.mail import send_mail
 from django.conf import settings
 # Create your views here.
@@ -68,7 +68,8 @@ def homepage(request):
         uservalue = request.user
         profile_photo = UserProfile.objects.get(user=uservalue)
         banners = banner.objects.all()
-        return render(request, "homepage.html", {'profile':form, 'post':post, 'profiles':profile_photo, 'banners':banners})
+        coment = Comment.objects.all()
+        return render(request, "homepage.html", {'profile':form, 'post':post, 'profiles':profile_photo, 'banners':banners, 'comment':coment})
     else:
         return redirect("/register")
 
@@ -105,6 +106,46 @@ def update(request, id):
             except:
                 pass
         return render(request,'edit_profile.html',{'profile':profile})
+
+def like_unlike_post(request):
+    if request.user.is_authenticated:
+        userlike = request.user
+        if request.method == "POST":
+            post_id = request.POST.get('prof_id')
+            post_obj = discussion.objects.get(discuss_id=post_id)
+            liked = False
+
+            if userlike in post_obj.liked.all():
+                liked = False
+                post_obj.liked.remove(userlike)
+            else:
+                liked = True
+                post_obj.liked.add(userlike)
+
+            like, created = Like.objects.get_or_create(userlikes=userlike, discuss_id=post_id, value=liked)
+
+            if not created:
+                if like.value =='Like':
+                    like.value='unlike'
+                else:
+                    like.value='Like'
+            else:
+                like.value='Like'
+                    
+            post_obj.save()
+            like.save()
+        return redirect('/')
+
+def comment_post(request):
+    if request.user.is_authenticated:
+        user_comment = request.user
+        if request.method == "POST":
+            comment = request.POST.get('comment_post')
+            comment_id = request.POST.get('prof_id')
+            comment, created = Comment.objects.get_or_create(userComment=user_comment, discuss_id=comment_id,comment=comment)
+
+            comment.save()
+        return redirect('/')
 
 def timeline(request, id):
     if request.user.is_authenticated:

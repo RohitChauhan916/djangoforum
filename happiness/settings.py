@@ -24,11 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '%q1lh5h#y*80i6_024l26dk^&z%5-d!j2ee1tan#5f16nx%3zh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'rohitc.aiplbrandbuzz@gmail.com'
-EMAIL_HOST_PASSWORD = 'pass@!((%word'
+EMAIL_HOST_PASSWORD = 'sec@!((%urity'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -146,6 +146,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = '/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
