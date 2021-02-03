@@ -115,7 +115,7 @@ WSGI_APPLICATION = 'happiness.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'parivaar',
         'USER': 'admin',
         'PASSWORD': 'Parivaar@!23',
