@@ -136,14 +136,18 @@
 															</span>
 														</li>-->
 														<li>
-															<span class="like" data-toggle="tooltip" title="like">
+															<li>
+<span class="like" data-toggle="tooltip" title="" data-original-title="like">
+<i class="ti-heart"></i>
+<ins>{{prof.num_likes}}</ins>
+</span>
 															<form action="{% url 'app:like_unlike_post' %}" method="POST">
 																{% csrf_token %}
 																<input type="hidden" name="prof_id" value="{{prof.discuss_id}}">
 																{% if user not in prof.liked.all %}
-																<button type="submit" class="ti-heart">Like</button>
+																<button type="submit" class="ti-heart"></button>
 																{% else %}
-																<button type="submit" class="ti-heart">UnLike</button>
+																<button type="submit" class="ti-heart"></button>
 																{% endif %}
 																</form>
 															</span>
@@ -157,7 +161,11 @@
 											{% for disc in prof.comment_set.all %}
 												<li>
 													<div class="comet-avatar">
-														<img src="images/resources/comet-1.jpg" alt="">
+														{% if profi.profile_photo %}
+											<img src="/static/images/{{profi.profile_photo}}" alt="" width="50px" height="50px">
+											{% else %}
+											<img src="/static/images/Profile/blank_profile.png" alt="" width="50px" height="50px">
+											{% endif %}
 													</div>
 													<div class="we-comment">
 														<div class="coment-head">
