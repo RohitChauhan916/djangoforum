@@ -11,7 +11,7 @@ class UserProfile(models.Model):
     emp_code = models.CharField(verbose_name="EMP Code", max_length=100, blank=True, null=True, unique=True)
     profile_photo = models.ImageField(verbose_name="Profile Photo", upload_to='Profile', blank=True, null=True)
     dob = models.CharField(verbose_name="D.O.B", max_length=50, blank=True, null=True)
-    department = models.CharField(verbose_name="Department", max_length=100, blank=True, null=True)
+    department = models.CharField(verbose_name="Department", max_length=100, blank=True)
     phone_number = models.CharField(verbose_name="Phone Number", max_length=20, blank=True, null=True)
     web_address = models.CharField(verbose_name="Web Address", max_length=100, blank=True, null=True)
     location = models.CharField(verbose_name="Location", max_length=100, blank=True, null=True)
