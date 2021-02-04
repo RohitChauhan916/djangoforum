@@ -1,1 +1,1 @@
-web: gunicorn happiness.wsgi --log-file -
+web: gunicorn parivaar.wsgi --log-file -
