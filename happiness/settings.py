@@ -100,7 +100,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'parivaar.wsgi.application'
+WSGI_APPLICATION = 'happiness.wsgi.application'
 
 
 # Database
