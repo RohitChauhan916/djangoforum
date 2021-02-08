@@ -36,7 +36,7 @@ def register(request):
             log = AuthenticationForm(request, data=request.POST)
             if log.is_valid():
                 username = log.cleaned_data.get('username')
-                password = log.cleaned_data.get('password')
+                password = log.cleaned_data.get('password').encode('utf-8')
                 user = authenticate(username=username, password=password)
                 if user is not None:
                     login(request, user)
