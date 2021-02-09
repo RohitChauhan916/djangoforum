@@ -28,7 +28,7 @@ def register(request):
                 return redirect("/register")
             else:
                 for msg in form.error_messages:
-                    print(form.error_messages[msg].encode('utf-8'))
+                    print(form.error_messages[msg])
     if request.user.is_authenticated:
         return redirect('/')
     else:
