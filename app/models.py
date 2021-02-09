@@ -26,7 +26,7 @@ class UserProfile(models.Model):
     cover_photo = models.ImageField(verbose_name="Cover", upload_to="cover", blank=True, null=True)
     
     def __str__(self):
-        return str(self.user)
+        return unicode(self.user)
 
 
 class discussion(models.Model):
