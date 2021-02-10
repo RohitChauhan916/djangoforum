@@ -187,7 +187,7 @@
 												{% endif %}
 													</div>
 													<div class="post-comt-box">
-														<form action="{% url 'app:comment_post' %}" method="POST">
+														<form class="comment" action="{% url 'app:comment_post' %}" method="POST">
 														{% csrf_token %}
 														<input type="hidden" name="prof_id" value="{{prof.discuss_id}}">
 															<textarea placeholder="Post your comment" name="comment_post" id="{{prof.discuss_id}}"></textarea>
@@ -208,7 +208,7 @@
 																<i class="em em-rage"></i>
 																<i class="em em-stuck_out_tongue"></i>
 															</div>
-															<button type="submit"></button>
+															<button class="btn" type="submit">Submit</button>
 														</form>	
 													</div>
 												</li>

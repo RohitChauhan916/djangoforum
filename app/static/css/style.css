@@ -1341,6 +1341,7 @@ textarea {
     padding: 10px;
     width: 100%;
     border-bottom: 0;
+	max-width: 60%;
 }
 
 form button {
@@ -1970,11 +1971,13 @@ li.post-comment .comet-avatar {
 
 .post-comt-box form button {
     bottom: 2px;
-    position: absolute;
     right: 0;
-    background: none;
 }
-
+.comment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 /*--- search friend widget ---*/
 
