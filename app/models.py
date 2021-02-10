@@ -25,8 +25,8 @@ class UserProfile(models.Model):
     reporting_to = models.CharField(verbose_name="Reporting To", max_length=100, blank=True, null=True)
     cover_photo = models.ImageField(verbose_name="Cover", upload_to="cover", blank=True, null=True)
     
-    def __unicode__(self):
-        return self.user
+    def __str__(self):
+        return str(self.user)
 
 
 class discussion(models.Model):
