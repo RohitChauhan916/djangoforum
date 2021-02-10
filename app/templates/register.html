@@ -24,7 +24,7 @@
                            <!-- <p>
                                 Don’t use Winku Yet? <a href="#" title="">Take the tour</a> or <a href="#" title="">Join now</a>
                             </p>-->
-                            <form method="POST">
+                            <form method="POST" enctype="application/x-www-form-urlencoded">
                                 {% csrf_token %}
                                 <div class="form-group">
                                     {{log.username}}
@@ -51,7 +51,7 @@
                            <!-- <p>
                                 Don’t use Winku Yet? <a href="#" title="">Take the tour</a> or <a href="#" title="">Join now</a>
                             </p>-->
-                            <form method="POST">
+                            <form method="POST" enctype="application/x-www-form-urlencoded">
                             {% csrf_token %}
                                 <div class="form-group">
                                     <input type="text" name="first_name" maxlength='150' autofocus required id="id_first_name" />
