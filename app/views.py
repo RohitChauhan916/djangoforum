@@ -27,7 +27,7 @@ def register(request):
                 messages.success(request, f"New Account Created: {username}")
                 return redirect("/register")
             else:
-                for msg in form.error_messages.as_data():
+                for msg in form.error_messages:
                     print(form.error_messages[msg])
     if request.user.is_authenticated:
         return redirect('/')
