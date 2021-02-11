@@ -29,8 +29,8 @@ DEBUG = False
 EMAIL_HOST = 'mail.aiplshopee.com'
 EMAIL_HOST_USER = 'aipl-parivaar@aiplshopee.com'
 EMAIL_HOST_PASSWORD = 'Parivaar@123'
-EMAIL_PORT = 465
-EMAIL_USE_TLS = False
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 ALLOWED_HOSTS = ['31.220.59.205']
