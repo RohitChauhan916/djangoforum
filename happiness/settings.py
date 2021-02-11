@@ -26,11 +26,11 @@ SECRET_KEY = '%q1lh5h#y*80i6_024l26dk^&z%5-d!j2ee1tan#5f16nx%3zh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-EMAIL_HOST = 'mail.aiplshopee.com'
-EMAIL_HOST_USER = 'aipl-parivaar@aiplshopee.com'
-EMAIL_HOST_PASSWORD = 'Parivaar@123'
-EMAIL_PORT = 465
-EMAIL_USE_TLS = False
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'rohitc.aiplbrandbuzz@gmail.com'
+EMAIL_HOST_PASSWORD = 'sec@!((%urity'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 ALLOWED_HOSTS = ['31.220.59.205']
