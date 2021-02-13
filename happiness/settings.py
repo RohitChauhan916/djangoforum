@@ -171,7 +171,7 @@ MEDIA_URL = '/media/'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media_root')
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
