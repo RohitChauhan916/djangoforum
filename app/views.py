@@ -218,3 +218,10 @@ def navbarView(request):
     if request.user.is_authenticated:
         return render(request,'navbar.html')
         
+def remove_discuss(request, post_id):
+    user_delete = get_object_or_404(discussion, pk=post_id)
+    if request.user.username == user_delete.username:
+        user_delete.delete()
+        return redirect('/')
+    else:
+        return HttpResponse("Not Delete")

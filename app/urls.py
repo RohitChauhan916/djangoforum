@@ -27,6 +27,7 @@ urlpatterns = [
    path("logout", views.logout_req, name="logout"),
    path("liked/", views.like_unlike_post, name="like_unlike_post"),
    path("commented/", views.comment_post, name="comment_post"),
+   path("delete/<int:post_id>", views.remove_discuss, name="remove_discuss"),
    
    path('password_reset/', auth_views.PasswordResetView.as_view(template_name="password_reset_form.html"), name="password_reset"),
 
