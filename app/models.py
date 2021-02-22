@@ -42,6 +42,15 @@ class discussion(models.Model):
     def __str__(self):
         return self.description
     
+     def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self.photo.path)
+
+        if img.height > 500 or img.width > 500:
+            output_size = (500,500)
+            img.thumbnail(output_size)
+            img.save(self.photo.path)
+    
     def num_likes(self):
         return self.liked.all().count()
 
