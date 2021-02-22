@@ -18,10 +18,10 @@
 				
 				<li>
 					<a href="#" title="Notification" data-ripple="">
-						<i class="ti-bell"></i><span>{{announced.count}}</span>
+						<i class="ti-bell"></i><span>{{notify.count}}</span>
 					</a>
 					<div class="dropdowns">
-						<span>{{announced.count}} New Notifications</span>
+						<span>{{notify.count}} New Notifications</span>
 						<ul class="drops-menu">
 						{% for announce in announced%}
 							<li>
@@ -33,6 +33,9 @@
 								</a>
 							</li>
 							{% endfor %}
+							{% for notifi in notify %}
+									<li>{{notifi.userlikes}}</li>
+								{% endfor %}
 						</ul>
 						<a href="/announce" title="" class="more-mesg">view more</a>
 					</div>
