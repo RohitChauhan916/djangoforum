@@ -123,7 +123,7 @@ def like_unlike_post(request):
                 liked = True
                 post_obj.liked.add(userlike)
 
-            like, created = Like.objects.get_or_create(userlikes=userlike, discuss_id=post_id, value=liked)
+            like, created = Like.objects.get_or_create(userlikes=userlike, discuss_id=post_id)
 
             if not created:
                 if like.value =='Like':
