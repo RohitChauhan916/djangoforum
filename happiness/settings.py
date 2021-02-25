@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '%q1lh5h#y*80i6_024l26dk^&z%5-d!j2ee1tan#5f16nx%3zh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 EMAIL_HOST = 'mail.aiplshopee.com'
 EMAIL_HOST_USER = 'aipl-parivaar@aiplshopee.com'
