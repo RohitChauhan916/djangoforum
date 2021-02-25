@@ -145,9 +145,9 @@
 <ins>{{prof.num_likes}}</ins>
 </span>
 																{% if user not in prof.liked.all %}
-																<button type="submit" class="ti-heart"></button>
+																<button type="submit" value="{{prof.discuss_id}}" id="like_button-{{prof.discuss_id}}" class="ti-heart"></button>
 																{% else %}
-																<button type="submit" class="ti-heart"></button>
+																<button type="submit" value="{{prof.discuss_id}}" id="like_button-{{prof.discuss_id}}" class="ti-heart"></button>
 																{% endif %}
 																<script>
 $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
