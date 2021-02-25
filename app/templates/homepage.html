@@ -144,15 +144,30 @@
 <i class="ti-heart"></i>
 <ins>{{prof.num_likes}}</ins>
 </span>
-															<form action="{% url 'app:like_unlike_post' %}" method="POST">
-																{% csrf_token %}
-																<input type="hidden" name="prof_id" value="{{prof.discuss_id}}">
 																{% if user not in prof.liked.all %}
 																<button type="submit" class="ti-heart"></button>
 																{% else %}
 																<button type="submit" class="ti-heart"></button>
 																{% endif %}
-																</form>
+																<script>
+$(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
+	e.preventDefault();
+	$.ajax({
+		url:"{% url 'app:like_unlike_post' %}",
+		type: "POST",
+		async: false,
+		cache: false,
+		data: {'prof_id': $('#like_button-{{prof.discuss_id}}').val(), 'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(), action: 'post'},
+		success: function(json, e){
+			document.getElementById("like_count-{{prof.discuss_id}}").innerHTML = json['count']
+			console.log(json)
+		}, error: function(error){
+			console.log(error)
+			console.log("error")
+		}
+	});
+})
+</script>
 															</span>
 														</li>
 													</ul>

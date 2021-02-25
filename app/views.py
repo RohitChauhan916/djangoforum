@@ -135,7 +135,7 @@ def like_unlike_post(request):
                     
             post_obj.save()
             like.save()
-        return redirect('/')
+        return JsonResponse({"liked": liked, "count":post_obj.num_likes()})
 
 def comment_post(request):
     if request.user.is_authenticated:
