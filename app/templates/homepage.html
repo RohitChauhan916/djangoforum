@@ -142,7 +142,7 @@
 															<li>
 <span class="like" data-toggle="tooltip" title="" data-original-title="like">
 <i class="ti-heart"></i>
-<ins>{{prof.num_likes}}</ins>
+<ins id="like_count-{{prof.discuss_id}}">{{prof.num_likes}}</ins>
 </span>
 																{% if user not in prof.liked.all %}
 																<button type="submit" value="{{prof.discuss_id}}" id="like_button-{{prof.discuss_id}}" class="ti-heart"></button>
