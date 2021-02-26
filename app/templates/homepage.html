@@ -207,7 +207,6 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 													</div>
 													<div class="post-comt-box">
 														<form>
-														{% csrf_token %}
 														<input type="hidden" name="prof_id" value="{{prof.discuss_id}}">
 															<textarea placeholder="Post your comment" name="comment_post" id="{{prof.discuss_id}}"></textarea>
 															<div class="add-smiles">
