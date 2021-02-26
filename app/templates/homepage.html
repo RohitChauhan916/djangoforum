@@ -176,6 +176,7 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 										</div>
 										<div class="coment-area">
 											<ul class="we-comet">
+											<div class="we_comet-{{prof.discuss_id}}">
 											{% for disc in prof.comment_set.all %}
 												<li>
 													<div class="comet-avatar">
@@ -189,12 +190,12 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 														<div class="coment-head">
 															<h5><a href="time-line.html" title=""></a>{{disc.userComment}}</h5>
 															<span>{{disc.created}}</span>
-															<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-														</div>
+															</div>
 														<p>{{disc.comment}}</p>
 													</div>
 												</li>
 												{% endfor %}
+												</div>
 												<li>
 													<a href="#" title="" class="showmore underline">more comments</a>
 												</li>
@@ -205,7 +206,7 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 												{% endif %}
 													</div>
 													<div class="post-comt-box">
-														<form class="comment" action="{% url 'app:comment_post' %}" method="POST">
+														<form>
 														{% csrf_token %}
 														<input type="hidden" name="prof_id" value="{{prof.discuss_id}}">
 															<textarea placeholder="Post your comment" name="comment_post" id="{{prof.discuss_id}}"></textarea>
@@ -226,8 +227,48 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 																<i class="em em-rage"></i>
 																<i class="em em-stuck_out_tongue"></i>
 															</div>
-															<button class="btn" type="submit">Submit</button>
+															<button id="btn_comment{{prof.discuss_id}}" type="button">Submit</button>
 														</form>	
+														<script>
+														$(document).ready(function(){
+															$('#btn_comment{{prof.discuss_id}}').on('click', function(e){
+																e.preventDefault();
+																comm = $('#{{prof.discuss_id}}').val();
+																console.log(comm)
+																$.ajax({
+																	type: "POST",
+																	url: "{% url 'app:comment_post' %}",
+																	async: false,
+																	cache: false,
+																	data: {'comment_post': $('#{{prof.discuss_id}}').val(),
+																			'prof_id':$('#prof_comment{{prof.discuss_id}}').val(),
+																		'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+																		action: 'post'
+																	},
+																	success: function(){
+																		$('#{{prof.discuss_id}}').val('');
+																		var _html = '<li>\
+													<div class="comet-avatar">\
+											<img src="/static/images/{{disc.userComment.oser.profile_photo.url}}" alt="" width="50px" height="50px">\
+													</div>\
+													<div class="we-comment anim_comet">\
+														<div class="coment-head">\
+															<h5><a href="time-line.html" title=""></a>{{request.user}}</h5>\
+															<span>now</span>\
+															<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>\
+														</div>\
+														<p id="disc_comment">'+comm+'</p>\
+													</div>\
+												</li>';
+												$(".we_comet-{{prof.discuss_id}}").append(_html);
+																	}, error: function(error){
+			console.log(error)
+			console.log("error")
+		}
+																});
+															});
+														});
+														</script>
 													</div>
 												</li>
 											</ul>

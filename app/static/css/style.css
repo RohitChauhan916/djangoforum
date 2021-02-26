@@ -64,6 +64,16 @@ img {
     width: 100%;
 }
 
+.anim_comet{
+  position: relative;
+  animation-name: example;
+  animation-duration: 2s;
+}
+@keyframes example {
+  75%  {left:0px; top:0px;}
+  0%   {left:0px; top:50px;}
+}
+
 .theme-layout.boxed {
     background: none repeat scroll 0 0 #FFFFFF;
     float: none;
