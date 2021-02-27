@@ -181,7 +181,7 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 												<li>
 													<div class="comet-avatar">
 														{% if profi.userComment.profile_photo %}
-											<img src="/static/images/{{profi.profile_photo}}" alt="" width="50px" height="50px">
+											<img src="/static/images/{{profi.userComment.profile_photo}}" alt="" width="50px" height="50px">
 											{% else %}
 											<img src="/static/images/Profile/blank_profile.png" alt="" width="50px" height="50px">
 											{% endif %}
