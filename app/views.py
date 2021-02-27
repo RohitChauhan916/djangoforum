@@ -54,6 +54,7 @@ def register(request):
 
 def homepage(request):
     if request.user.is_authenticated:
+        user_discuss = request.user.userprofile
         if request.method == 'POST':
             form = discussionForm(request.POST, request.FILES)
             if form.is_valid():
@@ -61,7 +62,7 @@ def homepage(request):
                 image = form.cleaned_data.get('photo')
                 if request.user.is_authenticated:
                     user_name = request.user
-                    form, created = discussion.objects.get_or_create(username=str(user_name), description=discuss, photo=image)
+                    form, created = discussion.objects.get_or_create(username=str(user_name), description=discuss, photo=image, profile=user_discuss)
                 form.save()
         else:
             form = discussionForm()
