@@ -139,7 +139,7 @@ def like_unlike_post(request):
 
 def comment_post(request):
     if request.user.is_authenticated:
-        user_comment = request.user
+        user_comment = request.user.userprofile
         if request.method == "POST":
             comment = request.POST.get('comment_post')
             comment_id = request.POST.get('prof_id')

@@ -145,7 +145,7 @@ class Like(models.Model):
         return str(self.userlikes)
 
 class Comment(models.Model):
-    userComment = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    userComment = models.ForeignKey(UserProfile, on_delete=models.CASCADE, blank=True, null=True)
     discuss = models.ForeignKey(discussion, on_delete=models.CASCADE, blank=True, null=True)
     comment = models.CharField(max_length=255, verbose_name="Comment", null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
