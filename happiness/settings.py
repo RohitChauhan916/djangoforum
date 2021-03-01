@@ -33,7 +33,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-ALLOWED_HOSTS = ['31.220.59.205']
+ALLOWED_HOSTS = ['aiplpraivaar.tk']
 
 # config ckeditor
 CKEDITOR_CONFIGS = {
