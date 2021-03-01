@@ -146,12 +146,13 @@
 															<li>
 <span class="like" data-toggle="tooltip" title="" data-original-title="like">
 <i class="ti-heart"></i>
+<br>
 <ins id="like_count-{{prof.discuss_id}}">{{prof.num_likes}}</ins>
 </span>
 																{% if user not in prof.liked.all %}
-																<button type="submit" value="{{prof.discuss_id}}" id="like_button-{{prof.discuss_id}}" class="ti-heart"></button>
+																<button type="submit" value="{{prof.discuss_id}}" id="like_button-{{prof.discuss_id}}">Like</button>
 																{% else %}
-																<button type="submit" value="{{prof.discuss_id}}" id="like_button-{{prof.discuss_id}}" class="ti-heart"></button>
+																<button type="submit" value="{{prof.discuss_id}}" id="like_button-{{prof.discuss_id}}">Unlike</button>
 																{% endif %}
 																<script>
 $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
@@ -164,6 +165,13 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 		data: {'prof_id': $('#like_button-{{prof.discuss_id}}').val(), 'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(), action: 'post'},
 		success: function(json, e){
 			document.getElementById("like_count-{{prof.discuss_id}}").innerHTML = json['count']
+			var like_val = document.getElementById("like_button-{{prof.discuss_id}}").innerHTML = json['liked']
+			if (like_val == true){
+				document.getElementById("like_button-{{prof.discuss_id}}").innerHTML = 'Unlike'
+			}
+			else {
+				document.getElementById("like_button-{{prof.discuss_id}}").innerHTML = 'Like'
+			}
 			console.log(json)
 		}, error: function(error){
 			console.log(error)
