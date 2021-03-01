@@ -226,3 +226,11 @@ def remove_discuss(request, post_id):
         return redirect('/')
     else:
         return HttpResponse("Not Delete")
+        
+def remove_comment(request, comment_id):
+    delete_comment = get_object_or_404(Comment, pk=comment_id)
+    if request.user.userprofile == delete_comment.userComment or request.user.userprofile != delete_comment.userComment:
+        delete_comment.delete()
+        return redirect('/')
+    else:
+        return HttpResponse("Not Delete")

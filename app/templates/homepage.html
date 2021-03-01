@@ -190,6 +190,9 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 														<div class="coment-head">
 															<h5><a href="time-line.html" title=""></a>{{disc.userComment}}</h5>
 															<span>{{disc.created}}</span>
+															{% if user.username == disc.discuss.username or user.userprofile == disc.userComment %}
+												<a href="{% url 'app:remove_comment' disc.id %}" class="ti-trash"></a>
+												{% endif %}
 															</div>
 														<p>{{disc.comment}}</p>
 													</div>
