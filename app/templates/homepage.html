@@ -86,13 +86,13 @@
 																<input type="file" name="photo" id="photo" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
 															</label>
 														</li>
-														<!--<li>
+														<li>
 															<i class="fa fa-video-camera"></i>
 															<label class="fileContainer">
 																<input type="file">
 															</label>
 														</li>
-														<li>
+														<!--<li>
 															<i class="fa fa-camera"></i>
 															<label class="fileContainer">
 																<input type="file">
@@ -133,6 +133,11 @@
 											<div class="post-meta">
 												{% if prof.photo %}
 												<img src="/static/images/{{prof.photo}}" alt="" width="300px" height="300px">
+												{% endif %}
+												{% if prof.video %}
+												<video width="300px" height="300px" controls>
+												<source src="/static/images/{{prof.video}}">
+												</video>
 												{% endif %}
 												<div class="we-video-info">
 													<ul>

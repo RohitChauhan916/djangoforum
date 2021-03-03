@@ -35,6 +35,7 @@ class discussion(models.Model):
     username = models.CharField(null=True, max_length=100)
     description = models.TextField(max_length=200, verbose_name="Description", blank=True, null=True)
     photo = models.ImageField(verbose_name="Image", upload_to='content', blank=True, null=True)
+    video = models.FileField(verbose_name="Video", upload_to='video', blank=True, null=True, default=None)
     date_published = models.DateTimeField(auto_now_add=True)
     profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True)
     liked = models.ManyToManyField(User, blank=True, related_name='Likes', default=None)

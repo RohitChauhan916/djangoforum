@@ -62,7 +62,7 @@ def homepage(request):
                 image = form.cleaned_data.get('photo')
                 if request.user.is_authenticated:
                     user_name = request.user
-                    form, created = discussion.objects.get_or_create(username=str(user_name), description=discuss, photo=image, profile=user_discuss)
+                    form, created = discussion.objects.get_or_create(username=str(user_name), description=discuss, photo=image, video=video, profile=user_discuss)
                 form.save()
         else:
             form = discussionForm()
