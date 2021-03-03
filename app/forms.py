@@ -33,7 +33,7 @@ class discussionForm(forms.ModelForm):
 
     class Meta:
         model = discussion
-        fields = ('description','photo',)
+        fields = ('description','photo','video',)
 
 class SuggestionForm(forms.ModelForm):
 
