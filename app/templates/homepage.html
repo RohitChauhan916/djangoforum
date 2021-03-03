@@ -121,7 +121,7 @@
 												<ins><a href="#" title="">{{prof.username}}</a></ins>
 												<span>{{prof.date_published}}</span>
 												{% if user.username == prof.username%}
-												<a href="{% url 'app:remove_discuss' prof.discuss_id %}">Delete</a>
+												<a href="{% url 'app:remove_discuss' prof.discuss_id %}" onClick="return confirm('Are you sure you want to delete this Post?');">Delete</a>
 												{% endif %}
 											</div>
 											<div class="description">
