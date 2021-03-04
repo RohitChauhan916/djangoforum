@@ -10167,6 +10167,26 @@ input.signup-rgstr{
     margin-top:20px;
 }
 
+@media only screen and (max-width: 641px) {
+  .fade{
+    width: 60%;
+    margin-top: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 100px;
+}
+  .p-3{
+    text-align: center;
+  }
+  .mt-5{
+    box-shadow: 0px 0px 10px 2px;
+  }
+  .fade .button{
+    width: 100px;
+  }
+}
+
 .mrgn-padding{
     margin: 0!important;
     padding: 0!important; 
