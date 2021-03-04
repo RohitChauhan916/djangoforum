@@ -843,7 +843,7 @@
     }
     .d-flex {
         display: inline-block !important;
-        width: 100%;
+        width: auto;
     }
     form .form-group.half {
         width: 100%;
