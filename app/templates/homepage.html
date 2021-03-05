@@ -172,9 +172,9 @@
 <ins id="like_count-{{prof.discuss_id}}">{{prof.num_likes}}</ins>
 </span>
 																{% if user not in prof.liked.all %}
-																<button type="submit" value="{{prof.discuss_id}}" id="like_button-{{prof.discuss_id}}">Like</button>
+																<button type="submit" value="{{prof.discuss_id}}" id="like_button-{{prof.discuss_id}}" class="ti-heart like_value"></button>
 																{% else %}
-																<button type="submit" value="{{prof.discuss_id}}" id="like_button-{{prof.discuss_id}}">Unlike</button>
+																<button type="submit" value="{{prof.discuss_id}}" id="like_button-{{prof.discuss_id}}" class="ti-heart like_value_red"></button>
 																{% endif %}
 																<script>
 $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
@@ -189,10 +189,14 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 			document.getElementById("like_count-{{prof.discuss_id}}").innerHTML = json['count']
 			var like_val = document.getElementById("like_button-{{prof.discuss_id}}").innerHTML = json['liked']
 			if (like_val == true){
-				document.getElementById("like_button-{{prof.discuss_id}}").innerHTML = 'Unlike'
+				document.getElementById("like_button-{{prof.discuss_id}}").innerHTML = '';
+				$('#like_button-{{prof.discuss_id}}').removeClass('like_value');
+					$("#like_button-{{prof.discuss_id}}").addClass("like_value_red");
 			}
 			else {
-				document.getElementById("like_button-{{prof.discuss_id}}").innerHTML = 'Like'
+				document.getElementById("like_button-{{prof.discuss_id}}").innerHTML = '';
+				$("#like_button-{{prof.discuss_id}}").addClass("like_value");
+					$('#like_button-{{prof.discuss_id}}').removeClass('like_value_red');
 			}
 			console.log(json)
 		}, error: function(error){
