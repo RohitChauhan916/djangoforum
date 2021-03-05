@@ -127,7 +127,7 @@
         <div class="d-flex align-items-center">
             <div class="image"> <img src="static/images/{{ prof.profile.profile_photo }}" class="rounded" width="155"> </div>
             <div class="ml-3 w-100">
-                <h4 class="mb-0 mt-0">{{prof.username}}</h4> <span>{{ prof.profile.department }}</span><br><span>{{ prof.profile.phone_number }}</span>
+                <h4 class="mb-0 mt-0">{{prof.username}}</h4> <span>{{prof.profile.user.first_name}} {{prof.profile.user.last_name}}</span><br><span>{{ prof.profile.department }}</span><br><span>{{prof.profile.user.email}}</span>
                 <br><span>{{prof.profile.dob}}</span><br><span>{{prof.profile.emp_code}}</span>
                 <div class="button mt-2 d-flex flex-row align-items-center"> <button class="btn btn-sm btn-outline-primary w-100" class="close" data-dismiss="modal" aria-label="Close">Close</button> </div>
             </div>
