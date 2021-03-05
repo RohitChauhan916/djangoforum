@@ -10170,12 +10170,8 @@ input.signup-rgstr{
 
 @media only screen and (max-width: 641px) {
   .fade{
-    width: 60%;
-    margin-top: 100px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 100px;
+    margin: 81px -33px;
+    padding: 63px;
 }
   .p-3{
     text-align: center;
