@@ -216,7 +216,7 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 											<ul class="we-comet">
 											<div class="we_comet-{{prof.discuss_id}}">
 											{% for disc in prof.comment_set.all %}
-												<li id="comment-{{disc.id}}>
+												<li id="comment-{{disc.id}}">
 													<div class="comet-avatar">
 														{% if disc.userComment.profile_photo %}
 											<img src="/static/images/{{disc.userComment.profile_photo}}" alt="" width="50px" height="50px">
@@ -229,7 +229,7 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 															<h5><a href="time-line.html" title=""></a>{{disc.userComment}}</h5>
 															<span>{{disc.created}}</span>
 															{% if user.username == disc.discuss.username or user.userprofile == disc.userComment %}
-												<a href="{% url 'app:remove_comment' disc.id %}" class="ti-trash" onClick="return confirm('Are you sure you want to delete this Comment?');"></a>
+												<a id="com_del-{{disc.id}}" class="ti-trash" ></a>
 												{% endif %}
 															</div>
 														<p>{{disc.comment}}</p>
@@ -239,6 +239,8 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 												$(document).ready(function(){
 													$('#com_del-{{disc.id}}').on('click', function(e){
 														e.preventDefault();
+														var action = confirm("Are you sure you want to delete this Comment?");
+														if (action != false){
 														$.ajax({
 															type: "POST",
 															url: "{% url 'app:remove_comment' disc.id %}",
@@ -257,6 +259,7 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 															console.log("error");
 															}
 														});
+														}
 													});
 												})
 												</script>
