@@ -216,7 +216,7 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 											<ul class="we-comet">
 											<div class="we_comet-{{prof.discuss_id}}">
 											{% for disc in prof.comment_set.all %}
-												<li>
+												<li id="comment-{{disc.id}}>
 													<div class="comet-avatar">
 														{% if disc.userComment.profile_photo %}
 											<img src="/static/images/{{disc.userComment.profile_photo}}" alt="" width="50px" height="50px">
@@ -235,6 +235,31 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 														<p>{{disc.comment}}</p>
 													</div>
 												</li>
+												<script>
+												$(document).ready(function(){
+													$('#com_del-{{disc.id}}').on('click', function(e){
+														e.preventDefault();
+														$.ajax({
+															type: "POST",
+															url: "{% url 'app:remove_comment' disc.id %}",
+															asyn: false,
+															cache: false,
+															data: {'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+																		_method: 'DELETE'},
+															success: function(data){
+																$("#comment-{{disc.id}}").addClass("delete_time");
+																setTimeout(function () {
+																$('#comment-{{disc.id}}').remove();
+																}, 2000);
+																console.log("success");
+															},
+															error: function(data){
+															console.log("error");
+															}
+														});
+													});
+												})
+												</script>
 												{% endfor %}
 												</div>
 												<li>
