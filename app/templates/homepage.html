@@ -252,7 +252,7 @@ $(document).on('click', '#like_button-{{prof.discuss_id}}', function(e){
 																$("#comment-{{disc.id}}").addClass("delete_time");
 																setTimeout(function () {
 																$('#comment-{{disc.id}}').remove();
-																}, 2000);
+																}, 1000);
 																console.log("success");
 															},
 															error: function(data){
