@@ -1343,8 +1343,16 @@ header.sticky {
     padding: 25px;
 }
 
-.central-meta-block{
-	 background: #3f51b5 none repeat scroll 0 0;
+.central-meta-block {
+    background: #3f51b5 none repeat scroll 0 0;
+    float: left;
+    padding: 10px;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.central-meta-block .form-group input:valid{
+	color:#fff !important;
 }
 
 .central-meta .f-title i,.central-meta .form-group input:valid ~ .control-label{
@@ -3919,8 +3927,13 @@ a.add-butn.more-action {
     margin-bottom: 30px;
     float: left;
 }
-.central-meta .form-group input:valid ~ .control-label{
-	color:#000 !important;
+.central-meta-block .form-group input:valid ~ .control-label{
+	color:#fff !important;
+}
+
+.central-meta-block .mtr-btn{
+	background:#fff;
+	color:#000;
 }
 
 .f-title::before {
