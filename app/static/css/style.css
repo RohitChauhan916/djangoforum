@@ -1006,8 +1006,8 @@ header.sticky {
 /*--- dropdowns ---*/
 
 .dropdowns {
-    background: #fff none repeat scroll 0 0;
-    border: 1px solid #e1e8ed;
+    background: #284890 none repeat scroll 0 0;
+    /* border: 1px solid #e1e8ed; */
     list-style: outside none none;
     max-height: 355px;
     overflow: auto;
@@ -1020,7 +1020,9 @@ header.sticky {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s linear 0s;
-	line-height: initial;
+    line-height: initial;
+    box-shadow: 1px 3px 10px #0000007d;
+    color: #fff;
 }
 
 .dropdowns.active {
@@ -1106,7 +1108,7 @@ header.sticky {
 
 .dropdowns > span {
     border-bottom: 1px solid #ccc;
-    color: #898989;
+    color: #fff;
     display: inline-block;
     font-size: 13px;
     font-weight: 500;
@@ -1194,6 +1196,7 @@ header.sticky {
     margin: 0 auto;
     padding-bottom: 20px;
     width: 100%;
+	margin-right: -15px;
 }
 
 .sidebar .widget {
@@ -1349,6 +1352,13 @@ header.sticky {
     margin-bottom: 0;
     vertical-align: top;
     width: 10.4%;
+	text-align: center;
+}
+
+.friend-info-block {
+    display: inline-block;
+    max-height: 50px;
+    overflow: hidden;
 }
 
 .newpst-input {
@@ -1356,6 +1366,13 @@ header.sticky {
     margin-left: 10px;
     vertical-align: top;
     width: 85.5%;
+    border: 1px solid #eee;
+    padding: 10px;
+}
+
+.attachments #blah {
+    border: 1px solid #eee;
+    box-shadow: none;
 }
 
 .newpst-input > form {
@@ -1365,6 +1382,7 @@ header.sticky {
 .newpst-input textarea {
     float: left;
     width: 100%;
+    border: 1px solid #eee;
 }
 .attachments {
     border: 1px solid #eee;
@@ -1385,6 +1403,11 @@ header.sticky {
     display: inline-block;
     margin-left: 5px;
 }
+
+.newpst-input textarea{
+	
+}
+
 
 textarea {
     border: 1px solid #eeeeee;
@@ -1426,8 +1449,16 @@ form button {
 .friend-name {
     display: inline-block;
     padding-left: 10px;
-    vertical-align: middle;
+    vertical-align: top;
     width: 90%;
+}
+
+.friend-name a {
+    color: #000;
+    font-size: 15px;
+    text-transform: capitalize;
+    font-weight: 600;
+    display: block;
 }
 
 .friend-name > ins {
@@ -2084,8 +2115,8 @@ span.status::after {
 
 span.status.f-online {
     background: #7FBA00;
+	display:none;
 }
-
 
 span.status.f-away {
     background: #ffd300;
@@ -2394,7 +2425,7 @@ footer .logo {
     background: #fff none repeat scroll 0 0;
     border-radius: 0 0 3px 3px;
     position: absolute;
-    right: -50px;
+    right: 0;
     text-align: left;
     top: 100%;
     width: 150px;
@@ -2402,7 +2433,7 @@ footer .logo {
     visibility: hidden;
     line-height: initial;
     border: 1px solid #e1e8ed;
-    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
 }
 
 .user-setting.active {
@@ -2418,6 +2449,7 @@ footer .logo {
     width: 100%;
     background: #fafafa;
     position: relative;
+	color: #f44336;
 }
 
 .user-setting .status {
@@ -2427,13 +2459,28 @@ footer .logo {
 }
 
 .user-setting > a i {
-    color: #999;
+    color: #fff !important;
     font-size: 12px;
     margin-right: 8px;
 }
 
+.user-setting > a:hover i{
+	color:#fff !important;
+}
+
+.a a {
+    background: #ef2b32;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.a .ti-home{
+	color:#fff;
+}
+
 .user-setting > a:hover {
-    background: #f1f1f1;
+    background: #3f51b5;
+	color:#fff !important;
 }
 
 
@@ -10176,19 +10223,28 @@ aside.sidebar.full-style {
     text-transform: uppercase;
 }
 
-.post-input{
+.post-input {
     border: none;
     text-transform: capitalize;
+    background: #3f51b5;
+    color: #fff;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    text-transform: uppercase;
+	font-weight:600;
 }
 
 input.signup-rgstr{
-    background: #4f93ce;
+    background: #3f51b5;
     color: white;
     padding: 5px 30px;
     border: 1px solid currentColor;
     font-size: 16px;
     border-radius: 6px;
     transition: background-color .28s ease,color .28s ease,box-shadow .28s ease,-webkit-box-shadow .28s ease;
+	margin-top: 18px;
 }
 
 .bnr-img {
