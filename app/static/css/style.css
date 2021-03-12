@@ -1532,7 +1532,7 @@ form button {
 .we-video-info > ul li {
     display: inline-block;
     font-size: 13px;
-    margin-right: 40px;
+    margin-right: 5px;
 }
 
 .we-video-info > ul li span {
@@ -1572,9 +1572,18 @@ form button {
 }
 
 .we-video-info > ul li span.like {
-    color: green;
+    color: #f44336;
     cursor: pointer;
     transition: all 0.2s linear 0s;
+}
+
+.we-comet li.post-comment {
+    position: absolute;
+    left: 0;
+}
+.we-comet a.showmore.underline {
+    position: absolute;
+    right: 0;
 }
 
 .we-video-info > ul li span.like:hover .we-video-info > ul li span.dislike:hover {
@@ -1875,10 +1884,10 @@ for some reason nth-child(1) is always busy and elements starting from 2 */
     vertical-align: top;
     width: 7.6%;
 }
-.comet-avatar > img{
-	max-width: 35px;
-	width: 35px;
-	min-width: 35px;
+.comet-avatar > img {
+    max-width: 100%;
+    display: inline-block;
+    height: 50px;
 }
 .we-comment {
     border: 1px solid #ede9e9;
@@ -1888,8 +1897,11 @@ for some reason nth-child(1) is always busy and elements starting from 2 */
     vertical-align: top;
     position: relative;
     width: 65%;
+	left: 12px;
 }
-
+ul.we-comet li {
+    margin-bottom: 15px;
+}
 .we-comment::before,
 .peoples-mesg-box > ul > li p:before {
     border-bottom: 10px solid transparent;
@@ -2052,9 +2064,29 @@ li.post-comment .comet-avatar {
 }
 
 .post-comt-box form button {
-    bottom: 2px;
+    bottom: 11px;
     right: 0;
+    top: -11px;
+    position: relative;
+    display: inline-block;
+    background: #3f51b5;
+    font-size: 15px;
+    padding: 5px 21px;
 }
+.we_comet-12 {
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.comet-avatar {
+    display: inline-block;
+    max-width: 7.6%;
+    vertical-align: top;
+    width: 7.6%;
+    overflow: hidden;
+    height: 50px;
+    float: left;
+}	
 .comment {
     display: flex;
     flex-direction: row;
@@ -2459,7 +2491,7 @@ footer .logo {
 }
 
 .user-setting > a i {
-    color: #fff !important;
+    color: #f44336 !important;
     font-size: 12px;
     margin-right: 8px;
 }
