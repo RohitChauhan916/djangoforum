@@ -3933,6 +3933,9 @@ a.add-butn.more-action {
 
 .central-meta-block .mtr-btn{
 	background:#fff;
+}
+
+.central-meta-block .mtr-btn span{		
 	color:#000;
 }
 
