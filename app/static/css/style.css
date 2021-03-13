@@ -10428,6 +10428,23 @@ input.signup-rgstr{
     width: 100%;
     min-height: 200px;
 }
+.event-block .post-title{
+    border-bottom:none;
+	margin-bottom:0;
+	padding-bottom:0;
+}
+.event-block .g-post-meta{
+    display: inline-block;
+    padding: 0 15px 15px;
+    width: 100%;
+    background: #023f88;
+}
+.event-block .post-title > h4{
+	margin-bottom:0;
+}
+.event-block .post-title > h4 a,.event-block .post-title .p-date{
+	color:#fff;
+}
 
 
 /* responsive */
@@ -10470,7 +10487,7 @@ input.signup-rgstr{
 		width: 100% !important;
 	}
 	
-	li.post-comment .comet-avatar{
+	li.post-comment .comet-avatar,.comet-avatar{
 		width: 45px !important;
 		max-width:40px !important;
 	}
