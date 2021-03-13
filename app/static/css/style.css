@@ -1600,11 +1600,17 @@ form button {
 }
 .we-comet a.showmore.underline {
     position: absolute;
-    right: 0;
+    right: 26px;
+}
+.central-meta-block .form-group .mtrl-select{
+	border-bottom: .0625rem solid #6b78bf !important;
+}
+.central-meta-block .form-group textarea:valid ~ .control-label{
+	color:#fff !important;
 }
 
 .we-video-info > ul li span.like:hover .we-video-info > ul li span.dislike:hover {
-    trnsform: scale(1.1);
+    transform: scale(1.1);
 }
 
 
@@ -2025,6 +2031,9 @@ li.post-comment .comet-avatar {
     height: 40px;
     line-height: 16px;
 }
+.central-meta-block .f-title::before{
+	background:#6b78bf !important;
+}
 .post-comt-box form textarea:focus{
     border: 1px solid #088dcd;
 }
@@ -2040,6 +2049,9 @@ li.post-comment .comet-avatar {
 .add-smiles > span {
     font-size: 12px;
     cursor: pointer;
+}
+.drops-menu > li p{
+	color:#fff !important;
 }
 
 .smiles-bunch {
@@ -3160,17 +3172,37 @@ li.google {
     text-align: right;
 }
 
+.central-meta-block .submit-btns{
+	margin-top:0 !important;
+} 
+
 .contact-form form .submit-btns i {
     color: #fff;
 }
-
+.top-area .user-img span {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.sidebar .widget-title{
+	font-weight:600 !important;
+}
+.register-block button.mtr-btns{
+    background: #023f88 !important;
+    border: 1px solid #023f88;
+}
+.register-block .form-group input:valid ~ .control-label{
+	color:#000 !important;
+}
+.register-block .log-reg-area form .forgot-pwd{
+	color:#000 !important;
+}
 .cntct-adres > ul {
     display: inline-block;
     list-style: outside none none;
     padding-left: 0;
     width: 100%;
 }
-
 .cntct-adres li {
     display: inline-block;
     margin-bottom: 20px;
@@ -10366,3 +10398,53 @@ input.signup-rgstr{
     width: 100%;
     min-height: 200px;
 }
+
+
+/* responsive */
+@media (max-width: 1024px) {
+	.log-reg-area{
+		width:90%;
+	}
+}
+
+
+@media (max-width: 768px) {
+	.sidebar .widget{
+		width: 100%;
+	}
+	
+	.newpst-input {
+		margin-left: 0;
+		width: 100%;
+		margin-top: 30PX;
+	}
+	
+	.new-postbox > figure{
+		width: 24.4%;
+		text-align: left;
+	}
+}
+
+
+@media (max-width: 480px) {
+	.log-reg-area > h2{
+		font-weight:600;
+	}
+	
+	.newpst-input {
+		width: 100%;
+	}
+	
+	li.post-comment .comet-avatar{
+		width: 45px;
+	}
+	.comet-avatar > img{
+		height:45px;
+	}
+	.we-comet li.post-comment {
+		position: relative;
+		left: 0;
+		top: 8px;
+	}
+}
+
