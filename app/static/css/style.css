@@ -3187,7 +3187,7 @@ li.google {
 .sidebar .widget-title{
 	font-weight:600 !important;
 }
-.register-block button.mtr-btns{
+.register-block button.mtr-btn{
     background: #023f88 !important;
     border: 1px solid #023f88;
 }
@@ -10432,11 +10432,11 @@ input.signup-rgstr{
 	}
 	
 	.newpst-input {
-		width: 100%;
+		width: 100% !important;
 	}
 	
 	li.post-comment .comet-avatar{
-		width: 45px;
+		width: 45px !important;
 	}
 	.comet-avatar > img{
 		height:45px;
@@ -10446,5 +10446,13 @@ input.signup-rgstr{
 		left: 0;
 		top: 8px;
 	}
+	
+	.land-meta img {
+		max-width: 52%;
+	}
+	.land-featurearea {
+		height: 16vh !important;
+	}
+
 }
 
