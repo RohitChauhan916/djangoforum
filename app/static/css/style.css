@@ -3483,15 +3483,19 @@ nav.breadcrumb {
 
 .accordion {
     display: inline-block;
-    margin-top: 30px;
+    margin-top: 15px;
     width: 100%;
 }
-
+#accordion h5 {
+    margin: 0;
+}
+#accordion button {
+    text-transform: uppercase;
+}
 .card-body {
     line-height: 30px;
     color: #888888;
 }
-
 .card-body ol,
 .card-body ul {
     margin-top: 20px;
@@ -10457,12 +10461,18 @@ input.signup-rgstr{
 		font-weight:600;
 	}
 	
+	.sidebar {
+		width: 100%;
+		margin-left: 0;
+	}
+	
 	.newpst-input {
 		width: 100% !important;
 	}
 	
 	li.post-comment .comet-avatar{
 		width: 45px !important;
+		max-width:40px !important;
 	}
 	.comet-avatar > img{
 		height:45px;
