@@ -1052,7 +1052,9 @@ header.sticky {
     display: inline-block;
     position: relative;
     width: 100%;
+	padding: 0 10px;
 }
+
 
 .drops-menu > li > .tag {
     color: #fff;
@@ -1074,6 +1076,10 @@ header.sticky {
     vertical-align: top;
     width: 16.7%;
     border-radius: 100%;
+}
+
+.mesg-meta > span{
+	color:#fff;
 }
 
 .mesg-meta {
