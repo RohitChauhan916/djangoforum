@@ -352,6 +352,26 @@ a:hover.vk {
     animation: mydelete 1s;
 }
 
+.forget-block .log-reg-area > h2 {
+    margin: 0 0 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-block;
+    color: #023f88;
+    text-align: left;
+    width: 100%;
+}
+
+.forget-block #id_email {
+    border: 1px solid #000;
+    margin-left: 13px;
+}
+
+.forget-block button.mtr-btn{
+	color:#fff;
+}
+
 @keyframes mydelete{
     0%   { opacity:1; }
   10%  { opacity:0.9; }
