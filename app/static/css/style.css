@@ -1002,6 +1002,23 @@ header.sticky {
     width: 78%;
 }
 
+.central-meta-block .submit-btns input {
+    background: #fff;
+    color: #000;
+    text-transform: capitalize;
+    border: 1px solid #fff;
+    font-weight: 600;
+    padding: 8px 26px;
+}
+
+.central-meta-block .form-group textarea:focus ~ .control-label{
+	color:#fff;
+}
+
+.central-meta-block .form-group textarea{
+	color:#fff;
+}
+
 .user-avatar:hover .edit-phto {
     bottom: 30px;
     opacity: 1;
@@ -1068,6 +1085,17 @@ header.sticky {
 
 .drops-menu > li:nth-child(2n) > a {
     background: whitesmoke none repeat scroll 0 0;
+}
+
+.event-block h3 {
+    font-size: 22px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 15px 0 30px;
+    padding: 0 0 8px;
+    border-bottom: 2px solid;
+    display: inline-block;
+    font-weight: 600;
 }
 
 .drops-menu > li a img {
