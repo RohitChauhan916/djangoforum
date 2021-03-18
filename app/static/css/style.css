@@ -721,6 +721,31 @@ header.sticky {
     padding: 19px;
 }
 
+
+.notify-block span {
+    top: 8px;
+}
+a.notify-block i {
+    background: #023f88;
+    padding: 10px;
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+    color: #Fff;
+}
+a.notify-block span {
+    top: 3px;
+    width: 20px;
+    height: 20px;
+    background: #eee;
+    text-align: center;
+    line-height: 22px !important;
+    display: inline-block;
+    border-radius: 50%;
+    box-shadow: 1px 3px 10px #0000004a;
+    color: #000 !important;
+}
+
 .top-area {
     display: inline-block;
     text-align: right;
