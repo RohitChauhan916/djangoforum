@@ -842,8 +842,8 @@
         width: 30%;
     }
     .d-flex {
-        /*display: inline-block !important;*/
-        width: 100%;
+       display: inline-block !important;
+        width: auto;
     }
     form .form-group.half {
         width: 100%;
@@ -1261,7 +1261,6 @@
         height: 100px;
         top: -60px;
     }
-
     footer .widget-title h4::before {
         width: 10%;
     }

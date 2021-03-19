@@ -64,6 +64,16 @@ img {
     width: 100%;
 }
 
+.anim_comet{
+  position: relative;
+  animation-name: example;
+  animation-duration: 2s;
+}
+@keyframes example {
+  75%  {left:0px; top:0px;}
+  0%   {left:0px; top:50px;}
+}
+
 .theme-layout.boxed {
     background: none repeat scroll 0 0 #FFFFFF;
     float: none;
@@ -154,6 +164,17 @@ section {
 	position: relative;
 }
 
+.image-sym {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background: #eee;
+}
+
 .upload_image p {
 	position: absolute;
 	top: 0;
@@ -167,22 +188,14 @@ section {
 	font-size: 12px;
 }
 
+
 .ext-gap {
     padding: 100px 0;
     float: left;
     width: 100%;
     position: relative;
 }
-.image-sym {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 100%;
-	background: #eee;
-}
+
 .remove-ext {
     float: left;
     width: 100%;
@@ -360,8 +373,69 @@ a:hover.vk {
 .checked {
     color: orange;
 }
+/* Like button */
+.like_value_red{
+    background-color: #e2264d;
+    color: white;
+    border: none;
+    animation: mymove 2s;
+    border-radius: 100px;
+    font-size: 20px;
+    padding: 10px;
+    box-shadow: 0px 0px 5px black;
+  }
 
+  @keyframes mymove{
+    0%{transform:scale(.2);}
+  40%{transform:scale(1.2);}
+  100%{transform:scale(1);}
+  }
 
+.like_value{
+    border: none;
+    border-radius: 100px;
+    font-size: 20px;
+    padding: 10px;
+    box-shadow: 0px 0px 5px black;
+}
+
+.delete_time{
+    animation: mydelete 1s;
+}
+
+.forget-block .log-reg-area > h2 {
+    margin: 0 0 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-block;
+    color: #023f88;
+    text-align: left;
+    width: 100%;
+}
+
+.forget-block #id_email {
+    border: 1px solid #000;
+    margin-left: 13px;
+}
+
+.forget-block button.mtr-btn{
+	color:#fff;
+}
+
+@keyframes mydelete{
+    0%   { opacity:1; }
+  10%  { opacity:0.9; }
+  20% { opacity:0.8; }
+  30% { opacity: 0.7;}
+  40% { opacity: 0.6;}
+  50% { opacity: 0.5;}
+  60% { opacity: 0.4;}
+  70% { opacity: 0.3;}
+  80% { opacity: 0.2;}
+  90% { opacity: 0.1;}
+  100% { opacity: 0;}
+}
 /*carousel nave style*/
 
 ul.owl-carousel {
@@ -698,6 +772,31 @@ header.sticky {
     padding: 19px;
 }
 
+
+.notify-block span {
+    top: 8px;
+}
+a.notify-block i {
+    background: #023f88;
+    padding: 10px;
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+    color: #Fff;
+}
+a.notify-block span {
+    top: 3px;
+    width: 20px;
+    height: 20px;
+    background: #eee;
+    text-align: center;
+    line-height: 22px !important;
+    display: inline-block;
+    border-radius: 50%;
+    box-shadow: 1px 3px 10px #0000004a;
+    color: #000 !important;
+}
+
 .top-area {
     display: inline-block;
     text-align: right;
@@ -758,8 +857,7 @@ header.sticky {
     display: inline-block;
     transform: scale(0.7);
     vertical-align: inherit;
-    width: 50px;
-    height: 50px;
+	max-height: 50px;
 }
 
 .form-search {
@@ -775,6 +873,10 @@ header.sticky {
 .searched.active .form-search {
     opacity: 1;
     visibility: visible;
+}
+
+.accordion .card h5 button[aria-expanded="true"]{
+	background:
 }
 
 .form-search input {
@@ -840,8 +942,6 @@ header.sticky {
 	box-shadow: 1px 3px 10px #00000059;
 }
 
-
-
 .user-avatar > figure > img {
     width: 100%;
 	border-radius: 100%;
@@ -901,12 +1001,14 @@ header.sticky {
 }
 
 .timeline-info .admin-name > h5 {
-    color: #088dcd;
+    color: #000;
     display: inline-block;
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 28px;
+    font-weight: 600;
     margin-bottom: 0;
     vertical-align: super;
+    text-transform: uppercase;
+    margin-top: 35px;
 }
 
 .timeline-info > ul li a::before {
@@ -1000,6 +1102,23 @@ header.sticky {
     width: 78%;
 }
 
+.central-meta-block .submit-btns input {
+    background: #fff;
+    color: #000;
+    text-transform: capitalize;
+    border: 1px solid #fff;
+    font-weight: 600;
+    padding: 8px 26px;
+}
+
+.central-meta-block .form-group textarea:focus ~ .control-label{
+	color:#fff;
+}
+
+.central-meta-block .form-group textarea{
+	color:#fff;
+}
+
 .user-avatar:hover .edit-phto {
     bottom: 30px;
     opacity: 1;
@@ -1010,8 +1129,8 @@ header.sticky {
 /*--- dropdowns ---*/
 
 .dropdowns {
-    background: #fff none repeat scroll 0 0;
-    border: 1px solid #e1e8ed;
+    background: #284890 none repeat scroll 0 0;
+    /* border: 1px solid #e1e8ed; */
     list-style: outside none none;
     max-height: 355px;
     overflow: auto;
@@ -1024,7 +1143,9 @@ header.sticky {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s linear 0s;
-	line-height: initial;
+    line-height: initial;
+    box-shadow: 1px 3px 10px #0000007d;
+    color: #fff;
 }
 
 .dropdowns.active {
@@ -1048,7 +1169,9 @@ header.sticky {
     display: inline-block;
     position: relative;
     width: 100%;
+	padding: 0 10px;
 }
+
 
 .drops-menu > li > .tag {
     color: #fff;
@@ -1064,12 +1187,27 @@ header.sticky {
     background: whitesmoke none repeat scroll 0 0;
 }
 
+.event-block h3 {
+    font-size: 22px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 15px 0 30px;
+    padding: 0 0 8px;
+    border-bottom: 2px solid;
+    display: inline-block;
+    font-weight: 600;
+}
+
 .drops-menu > li a img {
     display: inline-block;
     max-width: 16.7%;
     vertical-align: top;
     width: 16.7%;
     border-radius: 100%;
+}
+
+.mesg-meta > span{
+	color:#fff;
 }
 
 .mesg-meta {
@@ -1110,7 +1248,7 @@ header.sticky {
 
 .dropdowns > span {
     border-bottom: 1px solid #ccc;
-    color: #898989;
+    color: #fff;
     display: inline-block;
     font-size: 13px;
     font-weight: 500;
@@ -1198,6 +1336,7 @@ header.sticky {
     margin: 0 auto;
     padding-bottom: 20px;
     width: 100%;
+	margin-right: -15px;
 }
 
 .sidebar .widget {
@@ -1333,14 +1472,29 @@ header.sticky {
     padding-left: 12px;
 }
 
-.central-meta {
-    background: #fdfdfd none repeat scroll 0 0;
+.central-meta {   
     border: 1px solid #dad3d3;
     border-radius: 5px;
     display: inline-block;
     width: 100%;
     margin-bottom: 17px;
     padding: 25px;
+}
+
+.central-meta-block {
+    background: #3f51b5 none repeat scroll 0 0;
+    float: left;
+    padding: 10px;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.central-meta-block .form-group input:valid{
+	color:#fff !important;
+}
+
+.central-meta .f-title i,.central-meta .form-group input:valid ~ .control-label{
+	color:#fff !important;
 }
 
 .new-postbox {
@@ -1353,6 +1507,13 @@ header.sticky {
     margin-bottom: 0;
     vertical-align: top;
     width: 10.4%;
+	text-align: center;
+}
+
+.friend-info-block {
+    display: inline-block;
+    max-height: 50px;
+    overflow: hidden;
 }
 
 .newpst-input {
@@ -1360,6 +1521,13 @@ header.sticky {
     margin-left: 10px;
     vertical-align: top;
     width: 85.5%;
+    border: 1px solid #eee;
+    padding: 10px;
+}
+
+.attachments #blah {
+    border: 1px solid #eee;
+    box-shadow: none;
 }
 
 .newpst-input > form {
@@ -1369,6 +1537,7 @@ header.sticky {
 .newpst-input textarea {
     float: left;
     width: 100%;
+    border: 1px solid #eee;
 }
 .attachments {
     border: 1px solid #eee;
@@ -1390,12 +1559,18 @@ header.sticky {
     margin-left: 5px;
 }
 
+.newpst-input textarea{
+	
+}
+
+
 textarea {
     border: 1px solid #eeeeee;
     border-radius: 6px 6px 0 0;
     padding: 10px;
     width: 100%;
     border-bottom: 0;
+	max-width: 60%;
 }
 
 form button {
@@ -1429,8 +1604,16 @@ form button {
 .friend-name {
     display: inline-block;
     padding-left: 10px;
-    vertical-align: middle;
+    vertical-align: top;
     width: 90%;
+}
+
+.friend-name a {
+    color: #000;
+    font-size: 15px;
+    text-transform: capitalize;
+    font-weight: 600;
+    display: block;
 }
 
 .friend-name > ins {
@@ -1504,7 +1687,7 @@ form button {
 .we-video-info > ul li {
     display: inline-block;
     font-size: 13px;
-    margin-right: 40px;
+    margin-right: 5px;
 }
 
 .we-video-info > ul li span {
@@ -1544,13 +1727,28 @@ form button {
 }
 
 .we-video-info > ul li span.like {
-    color: green;
+    color: #f44336;
     cursor: pointer;
     transition: all 0.2s linear 0s;
 }
 
+.we-comet li.post-comment {
+    position: absolute;
+    left: 27px;
+}
+.we-comet a.showmore.underline {
+    position: absolute;
+    right: 26px;
+}
+.central-meta-block .form-group .mtrl-select{
+	border-bottom: .0625rem solid #6b78bf !important;
+}
+.central-meta-block .form-group textarea:valid ~ .control-label{
+	color:#fff !important;
+}
+
 .we-video-info > ul li span.like:hover .we-video-info > ul li span.dislike:hover {
-    trnsform: scale(1.1);
+    transform: scale(1.1);
 }
 
 
@@ -1847,10 +2045,10 @@ for some reason nth-child(1) is always busy and elements starting from 2 */
     vertical-align: top;
     width: 7.6%;
 }
-.comet-avatar > img{
-	max-width: 35px;
-	width: 35px;
-	min-width: 35px;
+.comet-avatar > img {
+    max-width: 100%;
+    display: inline-block;
+    height: 50px;
 }
 .we-comment {
     border: 1px solid #ede9e9;
@@ -1860,8 +2058,11 @@ for some reason nth-child(1) is always busy and elements starting from 2 */
     vertical-align: top;
     position: relative;
     width: 65%;
+	left: 12px;
 }
-
+ul.we-comet li {
+    margin-bottom: 15px;
+}
 .we-comment::before,
 .peoples-mesg-box > ul > li p:before {
     border-bottom: 10px solid transparent;
@@ -1916,6 +2117,7 @@ for some reason nth-child(1) is always busy and elements starting from 2 */
     font-size: 13.5px;
     font-weight: 500;
     padding-bottom: 5px;
+    text-transform: capitalize;
     display: inline-block;
     margin-bottom: 0;
     color: #2a2a2a;
@@ -1967,6 +2169,9 @@ li.post-comment .comet-avatar {
     height: 40px;
     line-height: 16px;
 }
+.central-meta-block .f-title::before{
+	background:#6b78bf !important;
+}
 .post-comt-box form textarea:focus{
     border: 1px solid #088dcd;
 }
@@ -1982,6 +2187,9 @@ li.post-comment .comet-avatar {
 .add-smiles > span {
     font-size: 12px;
     cursor: pointer;
+}
+.drops-menu > li p{
+	color:#fff !important;
 }
 
 .smiles-bunch {
@@ -2022,7 +2230,35 @@ li.post-comment .comet-avatar {
     transform: scale(1.1);
 }
 
-
+.post-comt-box form button {
+    bottom: 11px;
+    right: 0;
+    top: -11px;
+    position: relative;
+    display: inline-block;
+    background: #3f51b5;
+    font-size: 15px;
+    padding: 5px 21px;
+}
+.we_comet-12 {
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.comet-avatar {
+    display: inline-block;
+    max-width: 7.6%;
+    vertical-align: top;
+    width: 7.6%;
+    overflow: hidden;
+    height: 50px;
+    float: left;
+}	
+.comment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 /*--- search friend widget ---*/
 
@@ -2078,8 +2314,8 @@ span.status::after {
 
 span.status.f-online {
     background: #7FBA00;
+	display:none;
 }
-
 
 span.status.f-away {
     background: #ffd300;
@@ -2388,7 +2624,7 @@ footer .logo {
     background: #fff none repeat scroll 0 0;
     border-radius: 0 0 3px 3px;
     position: absolute;
-    right: -50px;
+    right: 0;
     text-align: left;
     top: 100%;
     width: 150px;
@@ -2396,7 +2632,7 @@ footer .logo {
     visibility: hidden;
     line-height: initial;
     border: 1px solid #e1e8ed;
-    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
 }
 
 .user-setting.active {
@@ -2412,6 +2648,7 @@ footer .logo {
     width: 100%;
     background: #fafafa;
     position: relative;
+	color: #f44336;
 }
 
 .user-setting .status {
@@ -2421,13 +2658,28 @@ footer .logo {
 }
 
 .user-setting > a i {
-    color: #999;
+    color: #f44336 !important;
     font-size: 12px;
     margin-right: 8px;
 }
 
+.user-setting > a:hover i{
+	color:#fff !important;
+}
+
+.a a {
+    background: #ef2b32;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.a .ti-home{
+	color:#fff;
+}
+
 .user-setting > a:hover {
-    background: #f1f1f1;
+    background: #3f51b5;
+	color:#fff !important;
 }
 
 
@@ -3058,17 +3310,37 @@ li.google {
     text-align: right;
 }
 
+.central-meta-block .submit-btns{
+	margin-top:0 !important;
+} 
+
 .contact-form form .submit-btns i {
     color: #fff;
 }
-
+.top-area .user-img span {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.sidebar .widget-title{
+	font-weight:600 !important;
+}
+.register-block button.mtr-btn{
+    background: #023f88 !important;
+    border: 1px solid #023f88;
+}
+.register-block .form-group input:valid ~ .control-label{
+	color:#000 !important;
+}
+.register-block .log-reg-area form .forgot-pwd{
+	color:#000 !important;
+}
 .cntct-adres > ul {
     display: inline-block;
     list-style: outside none none;
     padding-left: 0;
     width: 100%;
 }
-
 .cntct-adres li {
     display: inline-block;
     margin-bottom: 20px;
@@ -3313,7 +3585,7 @@ nav.breadcrumb {
     border: medium none;
     border-radius: 0;
     margin-bottom: 5px;
-    box-shadow: 0px 0px 20px grey;
+	box-shadow: 0px 0px 20px grey;
 }
 
 .accordion .card h5 button {
@@ -3345,15 +3617,19 @@ nav.breadcrumb {
 
 .accordion {
     display: inline-block;
-    margin-top: 30px;
+    margin-top: 15px;
     width: 100%;
 }
-
+#accordion h5 {
+    margin: 0;
+}
+#accordion button {
+    text-transform: uppercase;
+}
 .card-body {
     line-height: 30px;
     color: #888888;
 }
-
 .card-body ol,
 .card-body ul {
     margin-top: 20px;
@@ -3809,14 +4085,32 @@ a.add-butn.more-action {
 
 .f-title {
     font-size: 17.5px;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: capitalize;
-    color: #424242;
+    color: #fff;
     margin-bottom: 20px;
     padding-bottom: 20px;
     position: relative;
     display: inline-block;
-	width: 100%
+    width: 100%;
+}
+.central-meta .form-group input,.central-meta .form-group textarea{
+	color:#fff;
+}
+.central-meta .form-group {
+    margin-bottom: 30px;
+    float: left;
+}
+.central-meta-block .form-group input:valid ~ .control-label{
+	color:#fff !important;
+}
+
+.central-meta-block .mtr-btn{
+	background:#fff;
+}
+
+.central-meta-block .mtr-btn span{		
+	color:#000;
 }
 
 .f-title::before {
@@ -3826,6 +4120,7 @@ a.add-butn.more-action {
     left: 0;
     position: absolute;
     width: 50px;
+	background:#000 !important;
 }
 
 .f-title.ext-margin {
@@ -7776,6 +8071,7 @@ a.main-btn {
     border: 1px solid #eaeaea;
     display: inline-block;
     width: 100%;
+    position: relative;
 }
 
 .our-teambox > figure {
@@ -7783,26 +8079,47 @@ a.main-btn {
     margin-bottom: 0;
     width: 100%;
     overflow: hidden;
+    min-height: 250px;
+    max-height: 250px;
+    position: relative;
 }
-.our-teambox > figure img{
+.our-teambox > figure img {
     transition: all 0.3s linear 0s;
+    vertical-align: middle;
+    display: inline-block;
 }
 .our-teambox:hover figure img {
     transform: scale(1.1);
 }
 .team-info {
     display: inline-block;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
-    width: 100%;
+    background: #040404c7;
+    position: absolute;
+    bottom: 0;
+    z-index: 99999;
+    left: 0;
+    right: 0;
+    height: 50px;
+    overflow: hidden;
 }
-
 .team-info > h4 {
     display: inline-block;
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 0;
     width: 100%;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+.our-teambox:hover .team-info {
+    height: 78px;
+    transition: height 0.3s;
+}
+.our-teambox:hover figure img {
+    transform: scale(1.1);
 }
 
 .team-info > span {
@@ -10170,19 +10487,28 @@ aside.sidebar.full-style {
     text-transform: uppercase;
 }
 
-.post-input{
+.post-input {
     border: none;
     text-transform: capitalize;
+    background: #3f51b5;
+    color: #fff;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    text-transform: uppercase;
+	font-weight:600;
 }
 
 input.signup-rgstr{
-    background: #4f93ce;
+    background: #3f51b5;
     color: white;
     padding: 5px 30px;
     border: 1px solid currentColor;
     font-size: 16px;
     border-radius: 6px;
     transition: background-color .28s ease,color .28s ease,box-shadow .28s ease,-webkit-box-shadow .28s ease;
+	margin-top: 18px;
 }
 
 .bnr-img {
@@ -10201,6 +10527,22 @@ input.signup-rgstr{
 
 .mt-20 {
     margin-top:20px;
+}
+
+@media only screen and (max-width: 641px) {
+  .fade{
+    margin: 81px -33px;
+    padding: 63px;
+}
+  .p-3{
+    text-align: center;
+  }
+  .mt-5{
+    box-shadow: 0px 0px 10px 2px;
+  }
+  .fade .button{
+    width: 100px;
+  }
 }
 
 .mrgn-padding{
@@ -10263,3 +10605,89 @@ input.signup-rgstr{
     width: 100%;
     min-height: 200px;
 }
+
+.events-pg img{
+    width: 100%;
+    min-height: 200px;
+}
+.event-block .post-title{
+    border-bottom:none;
+	margin-bottom:0;
+	padding-bottom:0;
+}
+.event-block .g-post-meta{
+    display: inline-block;
+    padding: 0 15px 15px;
+    width: 100%;
+    background: #023f88;
+}
+.event-block .post-title > h4{
+	margin-bottom:0;
+}
+.event-block .post-title > h4 a,.event-block .post-title .p-date{
+	color:#fff;
+}
+
+
+/* responsive */
+@media (max-width: 1024px) {
+	.log-reg-area{
+		width:90%;
+	}
+}
+
+
+@media (max-width: 768px) {
+	.sidebar .widget{
+		width: 100%;
+	}
+	
+	.newpst-input {
+		margin-left: 0;
+		width: 100%;
+		margin-top: 30PX;
+	}
+	
+	.new-postbox > figure{
+		width: 24.4%;
+		text-align: left;
+	}
+}
+
+
+@media (max-width: 480px) {
+	.log-reg-area > h2{
+		font-weight:600;
+	}
+	
+	.sidebar {
+		width: 100%;
+		margin-left: 0;
+	}
+	
+	.newpst-input {
+		width: 100% !important;
+	}
+	
+	li.post-comment .comet-avatar,.comet-avatar{
+		width: 45px !important;
+		max-width:40px !important;
+	}
+	.comet-avatar > img{
+		height:45px;
+	}
+	.we-comet li.post-comment {
+		position: relative;
+		left: 0;
+		top: 8px;
+	}
+	
+	.land-meta img {
+		max-width: 52%;
+	}
+	.land-featurearea {
+		height: 16vh !important;
+	}
+
+}
+
