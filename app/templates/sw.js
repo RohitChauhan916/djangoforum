@@ -21,14 +21,15 @@ self.addEventListener('install', function(event){
 });
 
 self.addEventListener('activate', function(event){
-    //console.log('[Service Worker], Activating service worker', event);
-	event.respondWith(
-		caches.match(event.request).then(cacheRes => {
-			return cacheRes || fetch(event.request)
-		})
-	);
+    console.log('[Service Worker], Activating service worker', event);
+    return self.clients.claim();
 });
 
 self.addEventListener('fetch', function(event){
-    console.log('[Service Worker], Fetching service worker', event);
-})
+    //console.log('[Service Worker], Fetching service worker', event);
+	event.respondWith(
+		caches.match(event.request).then(cacheRes => {
+			return cacheRes || fetch(event.request);
+		})
+	)
+});
