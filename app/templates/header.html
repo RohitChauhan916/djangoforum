@@ -100,7 +100,9 @@ window.addEventListener('beforeinstallprompt', function(event){
     <script src="{% static 'js/map-init.js' %}"></script>
 {% if messages %}
   {% for message in messages %}
-    {% if message.tags == 'info'%}
+	{% if message.tags == 'success'%}
+		<script>toastr.success('{{message}}');</script>
+    {% elif message.tags == 'info'%}
       <script>toastr.success('{{message}}');</script>
     {% elif message.tags == 'waring'%}
       <script>toastr.warning('{{message}}')</script>
