@@ -1,6 +1,5 @@
 const staticCacheName = 'site-static';
 const assets = [
-	'/',
 	'/static/css/style.css',
 	'/static/css/responsive.css',
 	'/static/css/bootstrap.min.css',
