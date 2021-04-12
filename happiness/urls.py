@@ -13,3 +13,6 @@ urlpatterns = [
     path('ckeditor', include('ckeditor_uploader.urls')),
     path(r'^', include('django.contrib.auth.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+admin.site.site_header = "Aipl Parivaar"
