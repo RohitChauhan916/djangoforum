@@ -48,8 +48,8 @@ class discussion(models.Model):
         super(discussion, self).save(*args, **kwargs)
         if self.photo:
             img = Image.open(self.photo.path)
-            if img.height > 500 or img.width > 500:
-                output_size = (500,500)
+            if img.height > 960 or img.width > 960:
+                output_size = (960,960)
                 img.thumbnail(output_size)
                 img.save(self.photo.path)
     
@@ -106,6 +106,15 @@ class galleryPhoto(models.Model):
 
     def __str__(self):
         return str(self.gp_id)
+        
+    def save(self, *args, **kwargs):
+        super(galleryPhoto, self).save(*args, **kwargs)
+        if self.photo:
+            img = Image.open(self.photo.path)
+            if img.height > 960 or img.width > 960:
+                output_size = (960,960)
+                img.thumbnail(output_size)
+                img.save(self.photo.path)
 
 class performer(models.Model):
     p_id = models.AutoField(primary_key=True)
