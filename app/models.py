@@ -103,6 +103,7 @@ class galleryPhoto(models.Model):
     gp_id = models.AutoField(primary_key=True)
     gallery = models.ForeignKey(gallery, on_delete=models.CASCADE)
     photo = models.FileField(verbose_name="Gallery Photo", upload_to="Gallery", null=True, blank=True)
+    video = models.FileField(verbose_name="Videos", upload_to="Gallery", null=True, blank=True)
 
     def __str__(self):
         return str(self.gp_id)
@@ -115,6 +116,10 @@ class galleryPhoto(models.Model):
                 output_size = (960,960)
                 img.thumbnail(output_size)
                 img.save(self.photo.path)
+        if self.video:
+            paths = self.video.path
+            videos = subprocess.run('ffmpeg', -8, '-i', paths, '-r', '30', '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '0' ,paths)
+            videos.save(self.video.path)
 
 class performer(models.Model):
     p_id = models.AutoField(primary_key=True)
