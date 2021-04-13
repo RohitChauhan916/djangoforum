@@ -117,7 +117,11 @@ class galleryPhoto(models.Model):
                 output_size = (960,960)
                 img.thumbnail(output_size)
                 img.save(self.photo.path)
-                
+        if self.video:
+            paths = self.video.path
+            videos = subprocess.run('ffmpeg', -8, '-i', paths, '-r', '30', '-s', '960x540', paths)
+            videos.save(self.video.path)
+
 class performer(models.Model):
     p_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255, verbose_name="Title", null=True, blank=True)
