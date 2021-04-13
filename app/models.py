@@ -120,9 +120,9 @@ class galleryPhoto(models.Model):
         if self.video:
             paths = self.video.path
             videos = subprocess.check_call(
-            ['ffmpeg', '-v', '-8', '-i', paths, '-vf', 'scale=-2:480', '-preset', 'slow',
+            'ffmpeg', '-v', '-8', '-i', paths, '-vf', 'scale=-2:480', '-preset', 'slow',
              '-c:v', 'libx264', '-strict', 'experimental', '-c:a', 'aac', '-crf', '20', '-maxrate', '500k',
-             '-bufsize', '500k', '-r', '25', '-f', 'mp4', paths, '-y'])
+             '-bufsize', '500k', '-r', '25', '-f', 'mp4', paths, '-y')
             videos.save(self.video.path)
 
 class performer(models.Model):
