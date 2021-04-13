@@ -119,7 +119,7 @@ class galleryPhoto(models.Model):
                 img.save(self.photo.path)
         if self.video:
             paths = self.video.path
-            videos = subprocess.run('ffmpeg', -8, '-i', paths, '-r', '30', '-s', '960x540', paths)
+            videos = subprocess.run('ffmpeg', -8, '-i' ,paths, '-s' '640x480' 'output.mp4')
             videos.save(self.video.path)
 
 class performer(models.Model):
