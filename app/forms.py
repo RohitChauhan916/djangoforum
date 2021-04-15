@@ -11,6 +11,12 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username','first_name','last_name','email','password1','password2')
 
+class UserEdit(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ('username','first_name','last_name','email')
+
 class UserExtend(forms.ModelForm):
 
     class Meta:

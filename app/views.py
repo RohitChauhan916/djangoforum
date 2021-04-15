@@ -3,8 +3,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.models import User
 from django.contrib import messages
-from .forms import SignUpForm, UserExtend, ProfilePhoto, discussionForm, SuggestionForm, EditProfile
+from .forms import SignUpForm, UserExtend, ProfilePhoto, discussionForm, SuggestionForm, EditProfile,UserEdit
 from django.core.files.base import ContentFile 
 from .models import UserProfile, discussion, suggestion, advertisements, announce, event, galleryPhoto, gallery, performer, company, banner,Like, Comment
 from django.core.mail import send_mail
@@ -93,22 +94,27 @@ def edit_profile(request, id):
     if request.user.is_authenticated:
         uservalue = request.user
         profile = UserProfile.objects.get(user=uservalue)
-        return render(request, "edit_profile.html",{'profile':profile})
+        users = User.objects.get(username=uservalue)
+        return render(request, "edit_profile.html",{'profile':profile,'users':users})
 
 def update(request, id):
     if request.user.is_authenticated:
         uservalue = request.user
+        userid = request.user.id
         profile = UserProfile.objects.get(user=uservalue)
+        users = User.objects.get(id=userid)
         form = EditProfile(request.POST, request.FILES, instance=profile,)
-        if form.is_valid():
+        form1 = UserEdit(request.POST, instance=users,)
+        if form.is_valid() or form1.is_valid():
             try:
                 form.save()
+                form1.save()
                 emp = form.cleaned_data.get('emp_code')
                 messages.error()
                 return redirect('/')
             except:
                 pass
-        return render(request,'edit_profile.html',{'profile':profile})
+        return render(request,'edit_profile.html',{'profile':profile, 'users':users})
 
 def like_unlike_post(request):
     if request.user.is_authenticated:
