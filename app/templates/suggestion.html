@@ -37,10 +37,7 @@
                                             <form method="post">
                                             {% csrf_token %}
 
-                                                <div class="form-group half">
-                                                    <input type="text" name="emp_code" maxlength="200" id="id_emp_code" required>
-                                                    <label class="control-label" for="input">Employee Code</label><i class="mtrl-select"></i>
-                                                </div>
+                                                <input type="hidden" name="emp_code" maxlength="200" id="id_emp_code" value="{{user.userprofile.emp_code}}">
 
                                                 <div class="form-group">
                                                     <input type="text" name="subject" maxlength="200" id="id_subject" required>
