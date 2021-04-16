@@ -120,7 +120,7 @@ DATABASES = {
         'NAME': 'parivaar',
         'USER': 'admin',
         'PASSWORD': 'Parivaar@123',
-        'HOST': '127.0.0.1',
+        'HOST': '31.220.59.205',
         'PORT': '5432'
     }
 }
