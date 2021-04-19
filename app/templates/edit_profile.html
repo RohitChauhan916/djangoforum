@@ -75,9 +75,15 @@
 <form method="post" action="/update/{{user.id}}" enctype="multipart/form-data">
 {% csrf_token %}
 <div class="form-group">
- <input type="text" id="id_username" name="username" value="{{users.username}}"/>
+ <input autocomplete="off" type="text" id="id_username" onkeypress="return ignoreSpaces(event)" name="username" value="{{users.username}}"/>
  <label class="control-label" for="input">Username</label><i class="mtrl-select"></i>
 </div>
+<script>
+                                  function ignoreSpaces(event) {
+        var character = event ? event.which : window.event.keyCode;
+        if (character == 32) return false;
+    }
+                                </script>
 <div class="form-group">
  <input type="text" id="id_first_name" name="first_name" value="{{users.first_name}}"/>
  <label class="control-label" for="input">First Name</label><i class="mtrl-select"></i>
