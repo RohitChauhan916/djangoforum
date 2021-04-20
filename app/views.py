@@ -25,7 +25,11 @@ def register(request):
                 prof.user = user
                 prof.save()
                 username = form.cleaned_data.get('username')
+                email = form.cleaned_data.get('email')
+                message = f"Your are register Now: {username}"
                 messages.success(request, f"New Account Created: {username}")
+                message = f"Hey there, {username}\n\n\nThank you for joining AIPL Parivaar. We are going to do some amazing things here.\n\nSpeaking of amazing, the AGM 2021 was just too amazing.\n\nEveryone had a great time and the entry of legendry KAPIL DEV took our meet to the next level.\n\nWe all made some life-long memories and so we did manage to capture a few of them.\n\nHere is the like where you can download these memories and share them with your AIPL Parivaar.\n\nhttps://photos.app.goo.gl/WgjwxeKmuryQEYu7A\n\n So, browse, download &amp; Share at www.aiplparivaar.com\n\n\nLooking forward,\n\nTeam AIPL Parivaar"
+                send_mail('Welcome to your Parivaar – AIPL Parivaar', message, settings.EMAIL_HOST_USER,[email], fail_silently=False)
                 return redirect("/register")
             else:
                 for msg in form.error_messages:
