@@ -1,0 +1,44 @@
+{% extends 'header.html' %}
+{% block content %}
+{% include "navbar.html" %}
+ <div class="theme-layout register-block">
+        <div class="container-fluid pdng0">
+            <div class="row merged">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="land-featurearea">
+                        <div class="land-meta">
+                            <!--<h1>Aipl Parivaar</h1>-->
+                            <img src='http://aiplparivaar.com/static/images/logo.png' />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="login-reg-bg">
+                        <div class="log-reg-area sign">
+                            <h2 class="log-title">Select course you want to opt. for...</h2>
+                             <div class="select-course">
+{% for topic in quiz_topic %}
+<div class="course-block">
+                                   <span><a href="{{topic.topic_slug}}">{{topic.title}}</a></span>
+								</div>
+{% endfor %}
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- footer -->
+        <footer>
+            <div class="bottombar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="copyright">© AIPL Parivaar 2020. All rights reserved.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+{% endblock %}
