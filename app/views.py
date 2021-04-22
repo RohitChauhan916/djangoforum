@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import SignUpForm, UserExtend, ProfilePhoto, discussionForm, SuggestionForm, EditProfile,UserEdit
 from django.core.files.base import ContentFile 
-from .models import UserProfile, discussion, suggestion, advertisements, announce, event, galleryPhoto, gallery, performer, company, banner,Like, Comment
+from .models import UserProfile, discussion, suggestion, advertisements, announce, event, galleryPhoto, gallery, performer, company, banner,Like, Comment,Quiz,Topics,Score,userAnswer,inputUser
 from django.core.mail import send_mail
 from django.conf import settings
 # Create your views here.
@@ -245,3 +245,63 @@ def remove_comment(request, comment_id):
         return redirect('/')
     else:
         return HttpResponse("Not Delete")
+        
+def quiz(request):
+    if request.user.is_authenticated:
+        quizes = Topics.objects.all()
+    else:
+        return redirect('/')
+    return render(request, 'quiz.html', {'quiz_topic':quizes})
+
+def quiz_Test(request, single_slug):
+    if request.user.is_authenticated:
+        quiz = [q.topic_slug for q in Topics.objects.all()]
+        if single_slug in quiz:
+            test = Quiz.objects.filter(topic__topic_slug=single_slug)
+    else:
+        return HttpResponse("No test for unregister user")
+    return render(request,"quiz_test.html", {'testing':test})
+
+def test_quiz(request):
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            users = request.user.userprofile
+            quiz = Quiz.objects.all()
+            topic = request.POST.get('Top')
+            right = 0
+            wrong = 0
+            no_answer = 0
+            
+            allanswer, created = userAnswer.objects.get_or_create(topicAnswer=topic, userAnswer=users)
+            allanswer.save()
+            
+            for questions in quiz:
+                correct_answer = questions.Answer
+                entered_answer = request.POST.get("value" + str(questions.quiz_id))
+                print("User Click",entered_answer)
+                if(entered_answer == correct_answer):
+                    right+=1
+                elif(entered_answer == "None"):
+                    no_answer+=1
+                else:
+                    wrong+=1
+
+                percentage = right / 4 * 100
+
+                quest = request.POST.get("quiz_ques" + str(questions.quiz_id))
+                print("quest", quest)
+                print(allanswer)
+                useans = userAnswer.objects.get(ansid=allanswer.ansid)
+                try:
+                    extendAns = inputUser.objects.create(question=str(quest), quizAnswer=str(entered_answer), Answer=useans)
+                except inputUser.DoesNotExist:
+                    extendAns = None
+                extendAns.save()
+            
+            try:
+                scoring, created = Score.objects.get_or_create(user_score=users, Scoring=str(percentage), right=str(right), wrong=str(wrong), no_answer=str(no_answer), Topic_score=topic)
+            except Score.DoesNotExist:
+                scoring = None
+            scoring.save()
+        context = {"right":right, "wrong":wrong, "no_answer":no_answer, "percentage":percentage}
+        return render(request, "quiz_result.html", context)
