@@ -1,0 +1,90 @@
+{% extends 'header.html' %}
+{% block content %}
+{% include "navbar.html" %}
+ <div class="theme-layout register-block">
+        <div class="container-fluid pdng0">
+            <div class="row merged">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="land-featurearea">
+                        <div class="land-meta">
+                            <img src='http://aiplparivaar.com/static/images/logo.png' />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="login-reg-bg ques-block">
+                        <div class="log-reg-area sign">
+                         <script type="text/javascript">
+              var timeLeft=1*60;
+            </script>
+					<div class="timer_set">
+                        <h3 id="time">timeout</h3>
+                    </div>	
+<form autocomplete="off" method="POST" action="{% url 'app:test_quiz' %}" id="form1">
+{% csrf_token %}    
+{% for quiz_test in testing %}
+ <div class="select-course" id="list">
+     <h2 class="log-title">{{quiz_test.question}}</h2>
+     <input type="hidden" name="quiz_ques{{quiz_test.quiz_id}}" value="{{quiz_test.question}}">
+    <input type="radio" class="quiz_test-{{forloop.counter}}" id="{{quiz_test.quiz_id}}" name="value{{quiz_test.quiz_id}}" value="{{quiz_test.option_one}}">
+    <label for="{{quiz_test.quiz_id}}">{{quiz_test.option_one}}</label>
+    <input type="radio" class="quiz_test-{{forloop.counter}}" id="{{quiz_test.quiz_id}}" name="value{{quiz_test.quiz_id}}" value="{{quiz_test.option_two}}">
+    <label for="{{quiz_test.quiz_id}}">{{quiz_test.option_two}}</label>
+    <input type="radio" class="quiz_test-{{forloop.counter}}" id="{{quiz_test.quiz_id}}" name="value{{quiz_test.quiz_id}}" value="{{quiz_test.option_three}}">
+    <label for="{{quiz_test.quiz_id}}">{{quiz_test.option_three}}</label>
+    <input type="radio" class="quiz_test-{{forloop.counter}}" id="{{quiz_test.quiz_id}}" name="value{{quiz_test.quiz_id}}" value="{{quiz_test.Option_four}}">
+    <label for="{{quiz_test.quiz_id}}">{{quiz_test.Option_four}}</label>
+    <input type="hidden" id="val{{quiz_test.quiz_id}}" value="" name="{{quiz_test.quiz_id}}">
+    <input type="hidden" value="{{quiz_test.topic}}" name="Top">
+    </div>
+{%endfor%}
+<br>
+<div class="submit-btns">
+<button class="mtr-btn" type="button" id="next"><span>Next</span></button>
+<button type="submit" class="mtr-btn" id="submit"><span>Submit</span></button>
+</div>
+</form>
+</div>
+                    </div>
+					
+					 
+				  		
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    $(document).ready(function(){
+    answers = new Object();
+    $('.option').change(function(){
+        var answer = ($(this).attr('value'))
+        var question = ($(this).attr('name'))
+        answers[question] = answer
+    })
+    var item1 = document.getElementById('questions');
+    
+    var totalQuestions = $('.select-course').size();
+    console.log(totalQuestions)
+    var currentQuestion = 0;
+    var range = 1;
+    $questions = $('.select-course');
+    $questions.hide();
+    $($questions.get(currentQuestion)).fadeIn();
+    document.getElementById('submit').style.display="none";
+    $('#next').click(function(){
+        $($questions.get(currentQuestion)).fadeOut(function(){
+            currentQuestion = currentQuestion + 1;
+            if(currentQuestion == totalQuestions){
+                document.getElementById('next').style.display="none";
+                document.getElementById('submit').style.display="block";
+            }else{
+            $($questions.get(currentQuestion)).fadeIn();
+            }
+        });
+    
+    });
+    });
+    
+    
+    </script>
+{% endblock %}

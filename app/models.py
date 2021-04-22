@@ -169,3 +169,58 @@ class Comment(models.Model):
 
     def __str__(self):
         return str(self.comment)
+        
+class Topics(models.Model):
+    topic_id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=255, verbose_name="Title", blank=True, null=True)
+    image = models.ImageField(upload_to="quiz", verbose_name="Image", null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    topic_slug = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.title)
+
+class Quiz(models.Model):
+    quiz_id = models.AutoField(primary_key=True)
+    question = models.CharField(max_length=255, verbose_name="Question", blank=True, null=True)
+    option_one = models.CharField(max_length=255, verbose_name="Option_one", blank=True, null=True)
+    option_two = models.CharField(max_length=255, verbose_name="Option_two", blank=True, null=True)
+    option_three = models.CharField(max_length=255, verbose_name="Option_three", blank=True, null=True)
+    Option_four = models.CharField(max_length=255, verbose_name="Option_Four", blank=True, null=True)
+    Answer = models.CharField(max_length=255, verbose_name="Answer", blank=True, null=True)
+    topic = models.ForeignKey(Topics, on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.question)
+
+class Score(models.Model):
+    score_id = models.AutoField(primary_key=True)
+    user_score = models.ForeignKey(UserProfile, on_delete=models.CASCADE, blank=True, null=True)
+    Scoring = models.CharField(max_length=255, verbose_name="Score", blank=True, null=True)
+    right = models.CharField(max_length=50, verbose_name="Right", blank=True, null=True)
+    wrong = models.CharField(max_length=50, verbose_name="Wrong", blank=True, null=True)
+    no_answer = models.CharField(max_length=50, verbose_name="No_Answer", blank=True, null=True)
+    Topic_score = models.CharField(max_length=255, verbose_name="Topic", blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.score_id)
+
+class userAnswer(models.Model):
+    ansid = models.AutoField(primary_key=True)
+    topicAnswer = models.CharField(max_length=255, verbose_name="Topic", blank=True, null=True)
+    userAnswer = models.ForeignKey(UserProfile, on_delete=models.CASCADE,verbose_name="User", blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.ansid)
+
+class inputUser(models.Model):
+    inputid = models.AutoField(primary_key=True)
+    question = models.CharField(max_length=255, verbose_name="Question", blank=True, null=True)
+    quizAnswer = models.CharField(max_length=255, verbose_name="Answer", blank=True, null=True)
+    Answer = models.ForeignKey(userAnswer, on_delete=models.CASCADE,blank=True, null=True )
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.inputid)

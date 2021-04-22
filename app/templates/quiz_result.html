@@ -1,0 +1,26 @@
+{% extends 'header.html' %}
+{% block content %}
+{% include "navbar.html" %}
+ <div class="theme-layout register-block">
+        <div class="container-fluid pdng0">
+            <div class="row merged">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="land-featurearea">
+                        <div class="land-meta">
+                            <img src='http://aiplparivaar.com/static/images/logo.png' />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="login-reg-bg res-block">
+                        <div class="log-reg-area sign">
+                            <h2 class="log-title">Result</h2>
+                            <label for="fname">Wrong Answers:</label>
+							  <input type="text" id="fname" name="fname" value="{{wrong}}" readonly><br>
+							  <label for="lname">Right Answers:</label>
+							  <input type="text" id="lname" name="lname" value="{{right}}" readonly><br><br>
+							   <label for="lname">No Answer:</label>
+							  <input type="text" id="lname" name="lname" value="{{no_answer}}" readonly><br><br>
+                              <label for="lname">Percentage:</label>
+							  <input type="text" id="lname" name="lname" value="{{percentage}}" readonly><br>
+{% endblock %}

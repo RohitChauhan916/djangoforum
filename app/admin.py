@@ -37,6 +37,22 @@ class companyInline(admin.TabularInline):
 class performerAdmin(admin.ModelAdmin):
     fieldsets = [(None, {'fields':['title',]}),]
     inlines = [companyInline]
+    
+class quizInline(admin.StackedInline):
+    model = Quiz
+    extra = 0
+
+class TopicAdmin(admin.ModelAdmin):
+    fieldsets = [(None, {'fields':['title','image','topic_slug',]}),]
+    inlines = [quizInline]
+
+class InputInline(admin.TabularInline):
+    model = inputUser
+    extra = 0
+
+class AnswerAdmin(admin.ModelAdmin):
+    fieldsets = [(None, {'fields':['topicAnswer','userAnswer']}),]
+    inlines = [InputInline]
 
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
@@ -50,3 +66,6 @@ admin.site.register(Like)
 admin.site.register(Comment)
 admin.site.register(gallery,galleryAdmin)
 admin.site.register(banner)
+admin.site.register(Topics,TopicAdmin)
+admin.site.register(Score)
+admin.site.register(userAnswer,AnswerAdmin)
