@@ -89,8 +89,23 @@ window.addEventListener('beforeinstallprompt', function(event){
   content: "✖";
 }
 </style>
+ <script type="text/javascript">
+    function timeout() {
+      var minute = Math.floor(timeLeft/60);
+	  var second = timeLeft%60;
+	  if(timeLeft <= 0){
+		  clearTimeout(tm);
+		  document.createElement('form').submit.call(document.getElementById('form1'));
+	  }
+	  else{
+		document.getElementById("time").innerHTML = minute + " : " + second; 
+	  }
+	  timeLeft--;
+	  var tm = setTimeout(function() { timeout() },1000);
+    }
+  </script>
 </head>
-<body>
+<body onload="timeout()">
 {% block content %}
 {% endblock %}
 
