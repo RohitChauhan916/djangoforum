@@ -180,7 +180,7 @@ def suggest(request):
             subject = request.POST.get('subject')
             messages = request.POST.get('message')
             message = "EMP-Code" + " - " + emp + "\n" + "Subject" + " - " + subject + "\n" + "Message" + " - " + messages
-            send_mail('Suggestion Form', message, settings.EMAIL_HOST_USER,['rohitc.aiplbrandbuzz@gmail.com'], fail_silently=False)
+            send_mail('Suggestion Form', message, settings.EMAIL_HOST_USER,['rohitc.aiplbrandbuzz@gmail.com','hr@aiplabro.com','hrho@ajitindustries.com'], fail_silently=False)
 
             if form.is_valid():
                 form.save()
