@@ -99,11 +99,18 @@
 															</label>
 														</li>-->
 														<li>
-															<button type="submit" name="submit" class="signup-rgstr">Post</button>
+															<button id="btn" type="submit" name="submit" class="signup-rgstr" onclick="myFunction()">Post</button>
 														</li>
 													</ul>
 												</div>
 											</form>
+											<script>
+function myFunction() {
+  document.getElementById("btn").disabled = true;
+  console.log("clicked")
+  element.classList.add("mystyle");
+}
+</script>
 										</div>
 									</div>
 								</div><!-- add post new box -->
