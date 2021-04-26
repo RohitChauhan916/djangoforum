@@ -70,7 +70,7 @@
 											<input type="hidden" value="{{user.username}}" class="post-input" id="username" name="username">
 										</figure>
 										<div class="newpst-input">
-											<form method="POST" enctype="multipart/form-data">
+											<form method="POST" id="form_subm" enctype="multipart/form-data">
                                             {% csrf_token %}
                                           
 												<textarea name="description"  maxlength="200" id="id_description" spellcheck="false" placeholder="Write Something (Word Limit 200)"></textarea>
@@ -122,6 +122,13 @@ input.addEventListener('change', () => {
  
    span.innerText = '';
 })
+
+$(document).ready(function () {
+    $("#form_subm").submit(function () {
+        $("#btn").attr("disabled", true);
+        return true;
+    });
+});
 </script>
 										</div>
 									</div>
