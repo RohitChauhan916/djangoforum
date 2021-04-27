@@ -29,6 +29,21 @@ class UserProfile(models.Model):
     
     def __str__(self):
         return str(self.user)
+        
+    def save(self, *args, **kwargs):
+        super(discussion, self).save(*args, **kwargs)
+        if self.profile_photo:
+            img = Image.open(self.profile_photo.path)
+            if img.height > 500 or img.width > 500:
+                output_size = (500,500)
+                img.thumbnail(output_size)
+                img.save(self.profile_photo.path)
+        if self.cover_photo:
+            img = Image.open(self.cover_photo.path)
+            if img.height > 500 or img.width > 500:
+                output_size = (500,500)
+                img.thumbnail(output_size)
+                img.save(self.cover_photo.path)
 
 
 class discussion(models.Model):
@@ -138,6 +153,15 @@ class company(models.Model):
 
     def __str__(self):
         return self.company_name
+        
+    def save(self, *args, **kwargs):
+        super(discussion, self).save(*args, **kwargs)
+        if self.image:
+            img = Image.open(self.image.path)
+            if img.height > 500 or img.width > 500:
+                output_size = (500,500)
+                img.thumbnail(output_size)
+                img.save(self.image.path)
 
 class banner(models.Model):
     img_id = models.AutoField(primary_key=True)
