@@ -31,7 +31,7 @@ class UserProfile(models.Model):
         return str(self.user)
         
     def save(self, *args, **kwargs):
-        super(discussion, self).save(*args, **kwargs)
+        super(UserProfile, self).save(*args, **kwargs)
         if self.profile_photo:
             img = Image.open(self.profile_photo.path)
             if img.height > 500 or img.width > 500:
@@ -155,7 +155,7 @@ class company(models.Model):
         return self.company_name
         
     def save(self, *args, **kwargs):
-        super(discussion, self).save(*args, **kwargs)
+        super(company, self).save(*args, **kwargs)
         if self.image:
             img = Image.open(self.image.path)
             if img.height > 500 or img.width > 500:
