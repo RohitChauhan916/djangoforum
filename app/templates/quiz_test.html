@@ -15,7 +15,7 @@
                     <div class="login-reg-bg ques-block">
                         <div class="log-reg-area sign">
                          <script type="text/javascript">
-              var timeLeft=1*60;
+              var timeLeft=10*60;
             </script>
 					<div class="timer_set">
                         <h3 id="time">timeout</h3>
@@ -26,14 +26,22 @@
  <div class="select-course" id="list">
      <h2 class="log-title">{{quiz_test.question}}</h2>
      <input type="hidden" name="quiz_ques{{quiz_test.quiz_id}}" value="{{quiz_test.question}}">
+	 <div class="quiz_assem">
     <input type="radio" class="quiz_test-{{forloop.counter}}" id="{{quiz_test.quiz_id}}" name="value{{quiz_test.quiz_id}}" value="{{quiz_test.option_one}}">
     <label for="{{quiz_test.quiz_id}}">{{quiz_test.option_one}}</label>
+	</div>
+	<div class="quiz_assem">
     <input type="radio" class="quiz_test-{{forloop.counter}}" id="{{quiz_test.quiz_id}}" name="value{{quiz_test.quiz_id}}" value="{{quiz_test.option_two}}">
     <label for="{{quiz_test.quiz_id}}">{{quiz_test.option_two}}</label>
+	</div>
+	<div class="quiz_assem">
     <input type="radio" class="quiz_test-{{forloop.counter}}" id="{{quiz_test.quiz_id}}" name="value{{quiz_test.quiz_id}}" value="{{quiz_test.option_three}}">
     <label for="{{quiz_test.quiz_id}}">{{quiz_test.option_three}}</label>
+	</div>
+	<div class="quiz_assem">
     <input type="radio" class="quiz_test-{{forloop.counter}}" id="{{quiz_test.quiz_id}}" name="value{{quiz_test.quiz_id}}" value="{{quiz_test.Option_four}}">
     <label for="{{quiz_test.quiz_id}}">{{quiz_test.Option_four}}</label>
+	</div>
     <input type="hidden" id="val{{quiz_test.quiz_id}}" value="" name="{{quiz_test.quiz_id}}">
     <input type="hidden" value="{{quiz_test.topic}}" name="Top">
     </div>
