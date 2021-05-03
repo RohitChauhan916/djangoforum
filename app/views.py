@@ -286,7 +286,7 @@ def test_quiz(request):
                 else:
                     wrong+=1
 
-                percentage = right / 4 * 100
+                percentage = right / 10 * 100
 
                 quest = request.POST.get("quiz_ques" + str(questions.quiz_id))
                 print("quest", quest)
