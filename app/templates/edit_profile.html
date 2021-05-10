@@ -46,25 +46,23 @@
 <aside class="sidebar static">
 
 <div class="widget stick-widget">
-<h4 class="widget-title">Edit info</h4>
-<ul class="naves">
-<li>
-<i class="ti-info-alt"></i>
-<a href="#" title="">Basic info</a>
-</li>
-<li>
-<i class="ti-lock"></i>
-<a href="#" title="">change password</a>
-</li>
-                                            <li>
-<i class="ti-mouse-alt"></i>
-<a href="#" title="">Timeline</a>
-</li>
-                                            <li>
-<i class="ti-magnet"></i>
-<a href="#" title="">News Feed</a>
-</li>
-</ul>
+<h4 class="widget-title">Quiz Test</h4>
+<table class="naves">
+<tr>
+<th>Category</th>
+<th>Right</th>
+<th>Wrong</th>
+<th>Average</th>
+</tr>
+{% for scores in score%}
+<tr>
+<td><a href="#" title="">{{scores.Topic_score}}</a></td>
+<td><a href="#" title="">{{scores.right}}</a></td>
+<td><a href="#" title="">{{scores.wrong}}</a></td>
+<td><a href="#" title="">{{scores.Scoring}}</a></td>
+</tr>
+{% endfor %}
+</table>
 </div><!-- settings widget -->
 </aside>
 </div><!-- sidebar -->

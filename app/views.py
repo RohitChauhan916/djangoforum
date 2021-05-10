@@ -99,7 +99,11 @@ def edit_profile(request, id):
         uservalue = request.user
         profile = UserProfile.objects.get(user=uservalue)
         users = User.objects.get(username=uservalue)
-        return render(request, "edit_profile.html",{'profile':profile,'users':users})
+        try:
+            score = Score.objects.filter(user_score=profile)
+        except Score.DoesNotExist:
+            score = "None"
+        return render(request, "edit_profile.html",{'profile':profile,'users':users,'score':score})
 
 def update(request, id):
     if request.user.is_authenticated:
