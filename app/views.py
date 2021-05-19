@@ -10,6 +10,12 @@ from django.core.files.base import ContentFile
 from .models import UserProfile, discussion, suggestion, advertisements, announce, event, galleryPhoto, gallery, performer, company, banner,Like, Comment,Quiz,Topics,Score,userAnswer,inputUser
 from django.core.mail import send_mail
 from django.conf import settings
+import datetime
+import csv
+
+from django.template.loader import render_to_string
+from weasyprint import HTML
+import tempfile
 # Create your views here.
 
 def register(request):
@@ -309,3 +315,46 @@ def test_quiz(request):
             scoring.save()
         context = {"right":right, "wrong":wrong, "no_answer":no_answer, "percentage":percentage}
         return render(request, "quiz_result.html", context)
+        
+def reports(request):
+    sore = Score.objects.all().order_by('-Scoring')[:5]
+    total_score = Score.objects.all()
+    context = {"score":sore,"total":total_score}
+    return render(request,"report.html", context)
+        
+def export_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['content-Disposition']= 'attachment; filename=Quiz' + \
+        str(datetime.datetime.now())+'.csv'
+
+    writer = csv.writer(response)
+    writer.writerow(['Name', 'Average'])
+    quiz = Score.objects.all()
+
+    for quizes in quiz:
+        writer.writerow([quizes.user_score, quizes.Scoring])
+
+    return response
+
+def export_pdf(request, id):
+
+    response = HttpResponse(content_type="text/pdf")
+    response['Content-Disposition'] = 'inline; attachment; filename=Score' + \
+        str(datetime.datetime.now())+'.pdf'
+
+    response['Content-Transfer-Encoding']='binary'
+
+    total_score = Score.objects.filter(score_id=id)
+
+    html_string=render_to_string('pdf-output.html', {'expenses':total_score})
+    html = HTML(string=html_string)
+
+    result = html.write_pdf()
+
+    with tempfile.NamedTemporaryFile(delete=False) as output:
+        output.write(result)
+        output.flush()
+        output = open(output.name, 'rb')
+        response.write(output.read())
+
+        return response

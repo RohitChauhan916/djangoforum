@@ -32,6 +32,8 @@ urlpatterns = [
    path("quiz/", views.quiz, name="quiz"),
    path("quiz/<single_slug>", views.quiz_Test, name="quiz_Test"),
    path("result/", views.test_quiz, name="test_quiz"),
+   path("export_csv/", views.export_csv, name="export_csv"),
+   path("export_pdf/<int:id>", views.export_pdf, name="export_pdf"),
    
    path('password_reset/', auth_views.PasswordResetView.as_view(template_name="password_reset_form.html"), name="password_reset"),
 

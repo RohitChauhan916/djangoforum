@@ -1,0 +1,57 @@
+{% extends 'report_header.html' %}
+{% block content %}
+<header>
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="#">Dashboard</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      
+    </ul>
+  </div>
+</nav>
+</div>
+</header>
+<div class="col-md-12 main_screen">
+<div class="container">
+<div class="row">
+<div class="col-lg-12 report">
+  <div class="tools">
+  <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" id="myInput" placeholder="Search" aria-label="Search">
+    </form>  
+                     <a href="{% url 'app:export_csv' %}" class="btn btn-success"><i class="fas fa-download"></i></a>
+  </div>
+<table class="table table-striped" id="myTable">
+<tbody>
+<tr>
+<th onclick="sortTable(0)">id</th>
+<th onclick="sortTable(1)">Email</th>
+<th onclick="sortTable(1)">Test Name</th>
+<th onclick="sortTable(4)">Average</th>
+<th>PDF</th>
+</tr>
+{% for totals in total%}
+    <tr class="paginate" id="page_nation">
+    <td>{{totals.score_id}}</td>
+    <td><a href=''>{{totals.user_score}}</a></td>
+    <td>{{totals.Topic_score}}</td>
+    <td>{{totals.Scoring}}</td>
+    <td>
+    <a  href="/export_pdf/{{totals.score_id}}" class="btn btn-info"><i class="far fa-file-pdf"></i></a>
+                        </td>
+    </tr>
+  {% endfor%}
+   </tbody>
+</table>
+</div>
+</div>
+<div id="page-nav" class="pagination"></div>
+</div>
+</div>
+</div>
+{% endblock  %}

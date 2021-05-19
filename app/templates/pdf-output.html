@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@page{
+    size: "A4";
+    margin: 2.5cm 1.5cm 3.5cm 1.5cm;
+}
+.score{
+    text-align: center;
+}
+table th,td{
+    border: 1px solid black;
+    padding: 20px;
+}
+</style>
+</head>
+<body>
+<h2 class="score">User Score</h2>
+<table>
+<thead>
+<tr>
+<th>NO.</th>
+<th>Name</th>
+<th>Right</th>
+<th>wrong</th>
+<th>Average</th>
+</tr>
+</thead>
+{% for expenes in expenses%}
+<tr>
+<td>{{forloop.counter}}</td>
+<td>{{expenes.user_score}}</td>
+<td>{{expenes.right}}</td>
+<td>{{expenes.wrong}}</td>
+<td>{{expenes.Scoring}}</td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>
