@@ -224,7 +224,7 @@ class Score(models.Model):
     right = models.CharField(max_length=50, verbose_name="Right", blank=True, null=True)
     wrong = models.CharField(max_length=50, verbose_name="Wrong", blank=True, null=True)
     no_answer = models.CharField(max_length=50, verbose_name="No_Answer", blank=True, null=True)
-    Topic_score = models.ForeignKey(Topics, on_delete=models.CASCADE, blank=True, null=True)
+    Topic_score = models.CharField(max_length=255, verbose_name="Topic", blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
