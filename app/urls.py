@@ -32,6 +32,7 @@ urlpatterns = [
    path("quiz/", views.quiz, name="quiz"),
    path("quiz/<single_slug>", views.quiz_Test, name="quiz_Test"),
    path("result/", views.test_quiz, name="test_quiz"),
+   path("report/", views.reports, name="report"),
    path("export_csv/", views.export_csv, name="export_csv"),
    path("export_pdf/<int:id>", views.export_pdf, name="export_pdf"),
    
