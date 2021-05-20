@@ -309,7 +309,8 @@ def test_quiz(request):
                 extendAns.save()
             
             try:
-                scoring, created = Score.objects.get_or_create(user_score=users, Scoring=str(percentage), right=str(right), wrong=str(wrong), no_answer=str(no_answer), Topic_score=topic)
+                topicssss = Topics.objects.get(title=topic)
+                scoring, created = Score.objects.get_or_create(user_score=users, Scoring=str(percentage), right=str(right), wrong=str(wrong), no_answer=str(no_answer), Topic_score=topicssss)
             except Score.DoesNotExist:
                 scoring = None
             scoring.save()
